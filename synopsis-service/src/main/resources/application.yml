@@ -5,3 +5,13 @@ spring:
     schema:
       printer:
         enabled: true
+  config:
+    import: optional:file:.env[.properties]
+
+env:
+  API_KEY: ${API_KEY}
+  AUTH_VAL: ${AUTH_VAL}
+  CLIENT_ID: ${CLIENT_ID}
+  TIMESTAMP: ${TIMESTAMP}
+  TRACE: ${TRACE}
+  UUID: ${UUID}
