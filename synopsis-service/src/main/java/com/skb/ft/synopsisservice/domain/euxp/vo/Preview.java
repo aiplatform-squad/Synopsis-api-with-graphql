@@ -1,5 +1,12 @@
 package com.skb.ft.synopsisservice.domain.euxp.vo;
 
+import lombok.*;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Preview {
     public String title;
     public String prd_prc_id;
