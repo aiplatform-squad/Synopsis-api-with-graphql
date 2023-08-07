@@ -1,0 +1,53 @@
+type Euxp{
+    IF: String
+    banners: [JSON]
+    contents: Contents
+    purchares: [PurcharesEntry]
+    reason: String
+    request_time: Float
+    response_time: Float
+    result: String
+    series: [JSON]
+    total_banner_count: Int
+}
+
+type PurcharesEntry {
+    asis_prd_typ_cd: Int
+    brcast_avl_perd_yn: String
+    dsc_typ_cd: Int
+    epsd_id: String
+    epsd_rslu_id: String
+    expire_prd_prc_dt: String
+    lag_capt_typ_cd: Int
+    lag_capt_typ_exps_yn: String
+    next_free_prd_prc_fr_dt: String
+    next_prd_prc_fr_dt: String
+    next_prd_prc_typ_cd: Int
+    next_sale_prc_vat: Int
+    nscrn_yn: String
+    poc_det_typ_cd_list: [JSON]
+    possn_yn: String
+    ppm_free_join_perd_cd: String
+    ppm_free_join_yn: String
+    ppm_grid_icon_img_path: String
+    ppm_orgnz_fr_dt: String
+    ppm_orgnz_to_dt: String
+    ppm_prd_nm: String
+    ppm_prd_typ_cd: String
+    prd_prc: Int
+    prd_prc_fr_dt: Float
+    prd_prc_id: Int
+    prd_prc_to_dt: Float
+    prd_prc_vat: Int
+    prd_typ_cd: Int
+    purc_pref_rank: Int
+    purc_wat_dd_cnt: Int
+    purc_wat_dd_fg_cd: Int
+    purc_wat_to_dt: Float
+    rslu_typ_cd: Int
+    sale_prc: Int
+    sale_prc_vat: Int
+    sale_tgt_fg_yn: String
+    sris_id: String
+    use_yn: String
+}
