@@ -1,7 +1,17 @@
 package com.skb.ft.synopsisservice.domain.euxp.vo;
 
-import java.util.ArrayList;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.Date;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Contents {
     public String sris_id;
     public String sris_typ_cd;
@@ -32,9 +42,6 @@ public class Contents {
     public String sris_poster_filename_v;
     public String sris_poster_filename_h;
     public ArrayList<PossBgImg> poss_bg_img;
-    public class PossBgImg {
-        public String img_path;
-    }
     public String aprc_pt_cts;
     public String aprc_pt_cts_colr_val;
     public String open_yr;
@@ -104,9 +111,6 @@ public class Contents {
     public String cacbro_cd;
     public String cacbro_cts;
     public ArrayList<StillCut> stillCut;
-    public class StillCut {
-        public String img_path;
-    }
     public String mob_mda_capt_yn;
     public String mob_mda_file_path;
     public String seeking_img_path;

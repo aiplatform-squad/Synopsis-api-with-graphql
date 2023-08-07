@@ -1,7 +1,11 @@
 package com.skb.ft.synopsisservice.domain.euxp.vo;
 
-import java.util.ArrayList;
+import lombok.Builder;
+import lombok.Data;
 
+import java.util.ArrayList;
+@Data
+@Builder
 public class EpsdRsluInfo {
     public String epsd_rslu_id;
     public String rslu_typ_cd;
