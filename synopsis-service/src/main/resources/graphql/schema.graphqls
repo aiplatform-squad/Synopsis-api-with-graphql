@@ -1,0 +1,13 @@
+type Query {
+    euxpQuery(
+        IF: String
+        epsd_id: String
+        menu_stb_svc_id: String
+        search_type: String
+        stb_id: String
+        yn_recent: String
+    ): Euxp
+}
+
+scalar Date
+scalar JSON

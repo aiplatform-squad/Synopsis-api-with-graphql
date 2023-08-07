@@ -1,0 +1,304 @@
+type Contents{
+    actor: String
+    adlt_lvl_cd: String
+    ai_inside_scenes: [JSON]
+    all_ai_inside_scenes: [JSON]
+    aprc_pt_cts: String
+    aprc_pt_cts_colr_val: String
+    audio_lag_typ_cd: Int
+    bg_img_path: String
+    brcast_avl_perd_yn: String
+    brcast_chnl_nm: String
+    brcast_dy: String
+    brcast_exps_dy: String
+    brcast_tseq_nm: String
+    btv_pplr_yn: String
+    cacbro_cd: String
+    cacbro_cts: String
+    cacbro_yn: String
+    chrtr: String
+    chrtr_ai_typ_cd: String
+    combine_product_yn: String
+    contrp_id: String
+    """
+    Field "corners" is defined as JSON since its value was always 'null'
+    """
+    corners: JSON
+    cw_call_id: String
+    cw_call_id_val: String
+    dark_img_yn: String
+    director: String
+    dist_sts_cd: Int
+    ending_cw_call_id_val: String
+    epsd_dist_sts_cd: Int
+    epsd_evt_comt_call_objt_id: String
+    epsd_evt_comt_call_typ_cd: String
+    epsd_evt_comt_call_url: String
+    epsd_evt_comt_cts: String
+    epsd_evt_comt_exps_mthd_cd: String
+    epsd_evt_comt_img_path: String
+    epsd_evt_comt_scn_mthd_cd: String
+    epsd_evt_comt_title: String
+    epsd_evt_vas_itm_id: String
+    epsd_evt_vas_svc_id: String
+    epsd_exps_typ_cd: String
+    epsd_id: String
+    epsd_poster_filename_h: String
+    epsd_poster_filename_v: String
+    epsd_rslu_info: [EpsdRsluInfoEntry]
+    epsd_sales_comt_call_objt_id: String
+    epsd_sales_comt_call_typ_cd: String
+    epsd_sales_comt_call_url: String
+    epsd_sales_comt_cts: String
+    epsd_sales_comt_exps_mthd_cd: String
+    epsd_sales_comt_img_path: String
+    epsd_sales_comt_scn_mthd_cd: String
+    epsd_sales_comt_title: String
+    epsd_sales_vas_itm_id: String
+    epsd_sales_vas_svc_id: String
+    epsd_snss_cts: String
+    first_sris_id: String
+    genres: [GenresEntry]
+    gstn_yn: String
+    guest: String
+    has_inside_meta: Int
+    has_scene_meta: Int
+    kids_yn: String
+    lag_capt_typ_exps_yn: String
+    last_sris_id: String
+    manufco_nm: String
+    menu_id: String
+    meta_sub_typ_cd: String
+    meta_title_colr_val: String
+    meta_typ_cd: Int
+    mob_epsd_evt_comt_call_objt_id: String
+    mob_epsd_evt_comt_call_typ_cd: String
+    mob_epsd_evt_comt_call_url: String
+    mob_epsd_evt_comt_cts: String
+    mob_epsd_evt_comt_exps_mthd_cd: String
+    mob_epsd_evt_comt_img_bagr_colr_val: String
+    mob_epsd_evt_comt_img_path: String
+    mob_epsd_evt_comt_scn_mthd_cd: String
+    mob_epsd_evt_comt_title: String
+    mob_epsd_sales_comt_cts: String
+    mob_epsd_sales_comt_exps_mthd_cd: String
+    mob_epsd_sales_comt_title: String
+    mob_mda_capt_yn: String
+    mob_mda_file_path: String
+    mob_sris_evt_comt_call_objt_id: String
+    mob_sris_evt_comt_call_typ_cd: Int
+    mob_sris_evt_comt_call_url: String
+    mob_sris_evt_comt_cts: String
+    mob_sris_evt_comt_exps_mthd_cd: Int
+    mob_sris_evt_comt_img_bagr_colr_val: String
+    mob_sris_evt_comt_img_path: String
+    mob_sris_evt_comt_scn_mthd_cd: String
+    mob_sris_evt_comt_title: String
+    mob_sris_sales_comt_cts: String
+    mob_sris_sales_comt_exps_mthd_cd: Int
+    mob_sris_sales_comt_title: String
+    mtx_capt_yn: String
+    next_epsd_id: String
+    next_sris_id: String
+    nscrn_yn: String
+    open_yr: Int
+    orgn_epsd_id: String
+    otts: [JSON]
+    pblsr_nm: String
+    pcim_dimn_cd: String
+    pcim_fr_tmsc: Int
+    pcim_lvl1_exps_yn: String
+    pcim_lvl1_wat_age_cd: Int
+    pcim_lvl2_exps_yn: String
+    pcim_lvl2_wat_age_cd: Int
+    pcim_lvl3_exps_yn: String
+    pcim_lvl3_wat_age_cd: Int
+    pcim_lvl4_exps_yn: String
+    pcim_lvl4_wat_age_cd: Int
+    pcim_lvl5_exps_yn: String
+    pcim_lvl5_wat_age_cd: Int
+    pcim_lvl6_exps_yn: String
+    pcim_lvl6_wat_age_cd: Int
+    pcim_lvl7_exps_yn: String
+    pcim_lvl7_wat_age_cd: Int
+    pcim_lvl_cls_dy: Date
+    pcim_lvl_cls_no: String
+    pcim_lvl_exps_yn: String
+    peoples: [PeoplesEntry]
+    play_time: Int
+    play_tms_val: Int
+    poss_bg_img: [PossBgImgEntry]
+    pre_exam_yn: String
+    prev_epsd_id: String
+    prev_sris_id: String
+    preview: [PreviewEntry]
+    products: [JSON]
+    quiz_call_url: String
+    quiz_yn: String
+    rcmd_yn: String
+    rslu_typ_cd: Int
+    rsv_orgnz_yn: String
+    seeking_img_path: String
+    """
+    Field "series_info" is defined as JSON since its value was always 'null'
+    """
+    series_info: JSON
+    session_id: String
+    site_review: SiteReview
+    smtn_wat_abl_yn: String
+    snd_typ_cd: Int
+    special: [JSON]
+    sris_cmpt_yn: String
+    sris_evt_comt_call_objt_id: String
+    sris_evt_comt_call_typ_cd: String
+    sris_evt_comt_call_typ_cd2: String
+    sris_evt_comt_call_url: String
+    sris_evt_comt_call_url2: String
+    sris_evt_comt_cts: String
+    sris_evt_comt_cts2: String
+    sris_evt_comt_exps_mthd_cd: String
+    sris_evt_comt_exps_mthd_cd2: String
+    sris_evt_comt_img_path: String
+    sris_evt_comt_img_path2: String
+    sris_evt_comt_scn_mthd_cd: String
+    sris_evt_comt_title: String
+    sris_evt_comt_title2: String
+    sris_evt_vas_itm_id: String
+    sris_evt_vas_svc_id: String
+    sris_id: String
+    sris_poster_filename_h: String
+    sris_poster_filename_v: String
+    sris_sales_comt_call_objt_id: String
+    sris_sales_comt_call_typ_cd: String
+    sris_sales_comt_call_url: String
+    sris_sales_comt_cts: String
+    sris_sales_comt_exps_mthd_cd: String
+    sris_sales_comt_img_path: String
+    sris_sales_comt_scn_mthd_cd: String
+    sris_sales_comt_title: String
+    sris_sales_vas_itm_id: String
+    sris_sales_vas_svc_id: String
+    sris_snss_cts: String
+    sris_typ_cd: Int
+    sson_choic_nm: String
+    stillCut: [StillCutEntry]
+    sub_title: String
+    svc_fr_dt: Float
+    svc_to_dt: Float
+    svc_typ_cd: Int
+    thtr_ver_yn: String
+    title: String
+    title_img_path: String
+    tpcc_comt: String
+    track_id: String
+    trailer_view_yn: String
+    vc_bg_img_path: String
+    vc_dark_img_yn: String
+    vod_svc_yn: String
+    wat_lvl_cd: Int
+    wat_lvl_phrs: String
+}
+
+type PreviewEntry {
+    epsd_id: String
+    epsd_rslu_id: String
+    img_path: String
+    pcim_addn_typ_nm: String
+    play_tms_val: Int
+    prd_prc_id: Int
+    rtsp_cnt_url: String
+    title: String
+}
+
+type PossBgImgEntry {
+    img_path: String
+}
+
+type PeoplesEntry {
+    brth_ymd: String
+    img_path: String
+    prs_id: String
+    prs_nm: String
+    prs_plrl_nm: String
+    prs_role_cd: Int
+    prs_role_nm: String
+    sort_seq: Int
+}
+
+
+type SiteReview {
+    btv_pnt_info: [BtvPntInfoEntry]
+    prize_history: [JSON]
+    sites: [SitesEntry]
+    sris_id: String
+    tmdb_pnt_info: TmdbPntInfo
+}
+
+type TmdbPntInfo {
+    tmdb_pnt: Float
+    tmdb_pnt_user_ncnt: Int
+}
+
+type SitesEntry {
+    avg_pnt: Float
+    bas_pnt: Int
+    dist_info: [DistInfoEntry]
+    review_cnt: Int
+    reviews: [JSON]
+    site_cd: Int
+    site_nm: String
+}
+
+type BtvPntInfoEntry {
+    btv_like_ncnt: Int
+    btv_like_rate: Float
+    btv_ngood_ncnt: Int
+    btv_ngood_rate: Float
+    btv_pnt: Int
+}
+
+type StillCutEntry {
+    avg_pnt: Float
+    bas_pnt: Int
+    dist_info: [DistInfoEntry]
+    review_cnt: Int
+    reviews: [JSON]
+    site_cd: Int
+    site_nm: String
+}
+
+type DistInfoEntry {
+    dist_rate: Int
+    pnt: Float
+}
+
+type GenresEntry {
+    gnr_id: String
+    meta_gnr_nm: String
+    rep_gnr_yn: String
+}
+
+type EpsdRsluInfoEntry {
+    ai_capt_svc_file_path: String
+    ai_capt_yn: String
+    capt_lans: [JSON]
+    capt_svc_file_path: String
+    capt_yn: String
+    encd_piqu_typ_cd: Int
+    endg_tmtag_tmsc: Int
+    epsd_rslu_id: String
+    lag_capt_typ_cd: Int
+    matl_sts_cd: Int
+    mda_file_path: String
+    mtx_capt_svc_file_path: String
+    mtx_capt_yn: String
+    openg_tmtag_tmsc: Int
+    pcim_addn_typ_cd: Int
+    possn_yn: String
+    prd_prc_fr_dt: Float
+    prd_prc_to_dt: Float
+    preview_time: Int
+    rslu_typ_cd: Int
+    rtsp_cnt_url: String
+}
+
