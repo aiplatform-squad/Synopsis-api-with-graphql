@@ -6,7 +6,7 @@ type Euxp{
     reason: String
     request_time: Float
     response_time: Float
-    result: Int
+    result: String
     series: [JSON]
     total_banner_count: Int
 }
