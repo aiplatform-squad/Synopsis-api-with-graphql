@@ -1,0 +1,12 @@
+type SmdLikeHate {
+    IF: String
+    reason: String
+    result: String
+    like: String
+    dislike:String
+    updateDate:Date
+    like_total:String
+    dislike_total:String
+    updateDate_total:Date
+    like_rate:Int
+}

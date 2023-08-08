@@ -7,7 +7,12 @@ type Query {
         stb_id: String
         yn_recent: String
     ): Euxp
+    smdLikeHateQuery(
+
+    ):SmdLikeHate
 }
+
+
 
 scalar Date
 scalar JSON
