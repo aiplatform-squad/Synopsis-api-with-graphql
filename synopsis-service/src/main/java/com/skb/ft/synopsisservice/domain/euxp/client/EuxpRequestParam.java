@@ -1,5 +1,6 @@
 package com.skb.ft.synopsisservice.domain.euxp.client;
 
+import com.skb.ft.synopsisservice.global.common.YN;
 import lombok.Builder;
 import lombok.Data;
 
@@ -14,7 +15,3 @@ public class EuxpRequestParam {
     String epsd_id;
 }
 
-enum YN {
-    Y,
-    N
-}
