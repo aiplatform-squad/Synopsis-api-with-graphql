@@ -14,5 +14,4 @@ public class SmdRequestParam {
     String version_sw;
     String mac_address;
     YN total_yn;
-
 }
