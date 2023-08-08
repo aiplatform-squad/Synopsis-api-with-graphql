@@ -16,3 +16,4 @@ env:
   TRACE: ${TRACE}
   UUID: ${UUID}
   EUXP_URI: ${EUXP_URI}
+  SMD_URI: ${SMD_URI}
