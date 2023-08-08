@@ -1,12 +1,10 @@
-package com.skb.ft.synopsisservice.infra.feign;
+package com.skb.ft.synopsisservice.global.config;
 
 import feign.RequestInterceptor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.RequestHeader;
 
-public class HeaderConfiguration {
+public class HttpHeaderConfig {
     @Value("${env.AUTH_VAL}")
     String authVal;
     @Value("${env.CLIENT_ID}")

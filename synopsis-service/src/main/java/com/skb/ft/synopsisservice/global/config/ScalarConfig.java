@@ -1,4 +1,4 @@
-package com.skb.ft.synopsisservice.config;
+package com.skb.ft.synopsisservice.global.config;
 
 import graphql.Scalars;
 import graphql.scalars.ExtendedScalars;

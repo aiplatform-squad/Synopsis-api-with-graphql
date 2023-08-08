@@ -1,4 +1,4 @@
-package com.skb.ft.synopsisservice;
+package com.skb.ft.synopsisservice.api;
 
 import com.skb.ft.synopsisservice.domain.euxp.EuxpService;
 import com.skb.ft.synopsisservice.domain.euxp.client.EuxpRequestParam;
