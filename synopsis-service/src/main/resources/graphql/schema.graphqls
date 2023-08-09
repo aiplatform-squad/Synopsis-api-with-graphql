@@ -8,7 +8,13 @@ type Query {
         yn_recent: String
     ): Euxp
     smdLikeHateQuery(
-
+        IF: String
+        m: String
+        stb_id: String
+        version_sw:String
+        series_id:String
+        total_yn:String
+        mac_address:String
     ):SmdLikeHate
 }
 
