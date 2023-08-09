@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.GetMapping;
 @FeignClient(name = "smdApi", url = "${env.SMD_URI}",configuration = HttpHeaderConfig.class)
 public interface SmdApiClient {
     @GetMapping(value = "/sd-ui5service", consumes = "application/json") //consumes는 client가 서버에 보내는 타입. produecs는 서버에서 받아오는 타입
-    public SmdLikeHateResponseDto requestSmdGetLikeHAte(@SpringQueryMap SmdRequestParam smdRequestParam);
+    public SmdLikeHateResponseDto requestSmdGetLikeHate(@SpringQueryMap SmdRequestParam smdRequestParam);
 }
