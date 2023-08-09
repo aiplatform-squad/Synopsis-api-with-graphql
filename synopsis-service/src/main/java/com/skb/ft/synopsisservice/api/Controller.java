@@ -6,17 +6,19 @@ import com.skb.ft.synopsisservice.domain.euxp.vo.EuxpSynopsisResponseDto;
 import com.skb.ft.synopsisservice.domain.smd.SmdService;
 import com.skb.ft.synopsisservice.domain.smd.client.SmdRequestParam;
 import com.skb.ft.synopsisservice.domain.smd.vo.SmdLikeHateResponseDto;
+import com.skb.ft.synopsisservice.domain.scs.ScsService;
+import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewRequestDto;
+import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Arguments;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
-
-import java.util.Map;
 
 @org.springframework.stereotype.Controller
 @RequiredArgsConstructor
 public class Controller {
     private final EuxpService euxpService;
     private final SmdService smdService;
+    private final ScsService scsService;
     @QueryMapping
     public EuxpSynopsisResponseDto euxpQuery(@Arguments EuxpRequestParam euxpRequestParam){
         EuxpSynopsisResponseDto  euxpSynopsisResponseDto = euxpService.callEuxpResponse(euxpRequestParam);
@@ -26,6 +28,11 @@ public class Controller {
     public SmdLikeHateResponseDto smdLikeHateQuery(@Arguments SmdRequestParam smdRequestParam){
         SmdLikeHateResponseDto smdLikeHateResponseDto = smdService.callSmdLikeHateResponse(smdRequestParam);
         return smdLikeHateResponseDto;
+    }
+    @QueryMapping
+    public ScsDirectviewResponseDto scsDirectviewQuery(@Arguments ScsDirectviewRequestDto scsDirectviewRequestDto){
+        ScsDirectviewResponseDto scsDirectviewResponseDto=scsService.callScsDirectviewResponse(scsDirectviewRequestDto);
+        return  scsDirectviewResponseDto;
     }
 
 }

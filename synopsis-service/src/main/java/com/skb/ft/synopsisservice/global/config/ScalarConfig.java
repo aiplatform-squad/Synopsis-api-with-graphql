@@ -13,7 +13,7 @@ public class ScalarConfig {
     @Bean
     public RuntimeWiringConfigurer runtimeWiringConfigurer() {
         GraphQLScalarType Date = ExtendedScalars.newAliasedScalar("Date").aliasedScalar(Scalars.GraphQLString).build();
-        return wiringBuilder -> wiringBuilder.scalar(Date).scalar(ExtendedScalars.Json);
+        return wiringBuilder -> wiringBuilder.scalar(Date).scalar(ExtendedScalars.Json).scalar(ExtendedScalars.Object);
     }
 
 }
