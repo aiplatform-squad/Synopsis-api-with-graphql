@@ -23,7 +23,7 @@ public class Controller {
         return euxpSynopsisResponseDto;
     }
     @QueryMapping
-    public SmdLikeHateResponseDto smdGetLikeHateQuery(@Arguments SmdRequestParam smdRequestParam){
+    public SmdLikeHateResponseDto smdLikeHateQuery(@Arguments SmdRequestParam smdRequestParam){
         SmdLikeHateResponseDto smdLikeHateResponseDto = smdService.callSmdLikeHateResponse(smdRequestParam);
         return smdLikeHateResponseDto;
     }
