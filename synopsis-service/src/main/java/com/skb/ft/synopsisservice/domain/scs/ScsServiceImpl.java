@@ -1,8 +1,8 @@
 package com.skb.ft.synopsisservice.domain.scs;
 
 import com.skb.ft.synopsisservice.domain.scs.client.ScsApiClient;
-import com.skb.ft.synopsisservice.domain.scs.client.ScsRequestParam;
-import com.skb.ft.synopsisservice.domain.scs.vo.ScsResponseDto;
+import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewRequestDto;
+import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 public class ScsServiceImpl implements ScsService{
     private final ScsApiClient scsApiClient;
     @Override
-    public ScsResponseDto callScsResponse(ScsRequestParam scsRequestParam) {
-        ScsResponseDto scsResponseDto = scsApiClient.requestScs(scsRequestParam);
-        return scsResponseDto;
+    public ScsDirectviewResponseDto callScsDirectviewResponse(ScsDirectviewRequestDto scsDirectviewRequestDto) {
+        ScsDirectviewResponseDto scsDirectviewResponseDto = scsApiClient.requestScsDirectview(scsDirectviewRequestDto);
+        return scsDirectviewResponseDto;
     }
 }
