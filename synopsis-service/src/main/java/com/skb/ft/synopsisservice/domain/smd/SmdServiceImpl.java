@@ -14,7 +14,7 @@ public class SmdServiceImpl implements SmdService{
     private final SmdApiClient smdApiClient;
     @Override
     public SmdLikeHateResponseDto callSmdLikeHateResponse(SmdRequestParam smdRequestParam) {
-        SmdLikeHateResponseDto smdLikeHateResponseDto = smdApiClient.requestSmdGetLikeHAte(smdRequestParam);
+        SmdLikeHateResponseDto smdLikeHateResponseDto = smdApiClient.requestSmdGetLikeHate(smdRequestParam);
         int likeTotalNum=Integer.parseInt(smdLikeHateResponseDto.getLike_total());
         int dislikeTotalNum=Integer.parseInt(smdLikeHateResponseDto.getDislike_total());
         int likeRate=calculateLikeRate(likeTotalNum, dislikeTotalNum);
