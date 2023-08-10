@@ -5,7 +5,7 @@ import com.skb.ft.synopsisservice.domain.euxp.client.EuxpRequestParam;
 import com.skb.ft.synopsisservice.domain.euxp.vo.EuxpSynopsisResponseDto;
 import com.skb.ft.synopsisservice.domain.smd.SmdService;
 import com.skb.ft.synopsisservice.domain.smd.client.SmdRequestParam;
-import com.skb.ft.synopsisservice.domain.smd.vo.SmdLikeHateResponseDto;
+import com.skb.ft.synopsisservice.domain.smd.dto.SmdLikeHateResponseDto;
 import com.skb.ft.synopsisservice.domain.scs.ScsService;
 import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewRequestDto;
 import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewResponseDto;

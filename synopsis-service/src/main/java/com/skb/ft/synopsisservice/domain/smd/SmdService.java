@@ -1,7 +1,7 @@
 package com.skb.ft.synopsisservice.domain.smd;
 
 import com.skb.ft.synopsisservice.domain.smd.client.SmdRequestParam;
-import com.skb.ft.synopsisservice.domain.smd.vo.SmdLikeHateResponseDto;
+import com.skb.ft.synopsisservice.domain.smd.dto.SmdLikeHateResponseDto;
 import org.springframework.stereotype.Service;
 
 @Service

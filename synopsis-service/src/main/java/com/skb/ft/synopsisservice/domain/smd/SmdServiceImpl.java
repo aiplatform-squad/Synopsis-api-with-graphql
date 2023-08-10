@@ -2,7 +2,7 @@ package com.skb.ft.synopsisservice.domain.smd;
 
 import com.skb.ft.synopsisservice.domain.smd.client.SmdApiClient;
 import com.skb.ft.synopsisservice.domain.smd.client.SmdRequestParam;
-import com.skb.ft.synopsisservice.domain.smd.vo.SmdLikeHateResponseDto;
+import com.skb.ft.synopsisservice.domain.smd.dto.SmdLikeHateResponseDto;
 import com.skb.ft.synopsisservice.global.common.YN;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

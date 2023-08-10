@@ -1,6 +1,6 @@
 package com.skb.ft.synopsisservice.domain.smd.client;
 
-import com.skb.ft.synopsisservice.domain.smd.vo.SmdLikeHateResponseDto;
+import com.skb.ft.synopsisservice.domain.smd.dto.SmdLikeHateResponseDto;
 import com.skb.ft.synopsisservice.global.config.HttpHeaderConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
