@@ -1,4 +1,4 @@
-package com.skb.ft.synopsisservice.domain.smd.vo;
+package com.skb.ft.synopsisservice.domain.smd.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
