@@ -2,7 +2,7 @@ package com.skb.ft.synopsisservice.domain.euxp;
 
 import com.skb.ft.synopsisservice.domain.euxp.client.EuxpApiClient;
 import com.skb.ft.synopsisservice.domain.euxp.client.EuxpRequestParam;
-import com.skb.ft.synopsisservice.domain.euxp.vo.EuxpSynopsisResponseDto;
+import com.skb.ft.synopsisservice.domain.euxp.dto.EuxpSynopsisResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

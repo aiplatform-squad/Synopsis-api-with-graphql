@@ -1,6 +1,6 @@
 package com.skb.ft.synopsisservice.domain.euxp.client;
 
-import com.skb.ft.synopsisservice.domain.euxp.vo.EuxpSynopsisResponseDto;
+import com.skb.ft.synopsisservice.domain.euxp.dto.EuxpSynopsisResponseDto;
 import com.skb.ft.synopsisservice.global.config.HttpHeaderConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;

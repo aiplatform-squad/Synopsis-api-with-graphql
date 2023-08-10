@@ -1,6 +1,8 @@
-package com.skb.ft.synopsisservice.domain.euxp.vo;
+package com.skb.ft.synopsisservice.domain.euxp.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.skb.ft.synopsisservice.domain.euxp.vo.Contents;
+import com.skb.ft.synopsisservice.domain.euxp.vo.Purchare;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

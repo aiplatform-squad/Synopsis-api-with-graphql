@@ -2,7 +2,7 @@ package com.skb.ft.synopsisservice.api;
 
 import com.skb.ft.synopsisservice.domain.euxp.EuxpService;
 import com.skb.ft.synopsisservice.domain.euxp.client.EuxpRequestParam;
-import com.skb.ft.synopsisservice.domain.euxp.vo.EuxpSynopsisResponseDto;
+import com.skb.ft.synopsisservice.domain.euxp.dto.EuxpSynopsisResponseDto;
 import com.skb.ft.synopsisservice.domain.smd.SmdService;
 import com.skb.ft.synopsisservice.domain.smd.client.SmdRequestParam;
 import com.skb.ft.synopsisservice.domain.smd.vo.SmdLikeHateResponseDto;
