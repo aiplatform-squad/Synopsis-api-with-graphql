@@ -22,3 +22,5 @@ env:
 logging:
   level:
     com.skb.ft.synopsisservice.domain: DEBUG
+    org.apache.tomcat: INFO
+    org.apache.tomcat.util.net: WARN
