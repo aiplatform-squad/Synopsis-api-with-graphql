@@ -8,6 +8,7 @@ spring:
   config:
     import: optional:file:.env[.properties]
 
+
 env:
   API_KEY: ${API_KEY}
   AUTH_VAL: ${AUTH_VAL}
@@ -18,3 +19,6 @@ env:
   EUXP_URL: ${EUXP_URL}
   SMD_URL: ${SMD_URL}
   SCS_URL: ${SCS_URL}
+logging:
+  level:
+    com.skb.ft.synopsisservice.domain: DEBUG
