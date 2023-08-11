@@ -19,4 +19,10 @@ public class OpenFeignTest {
         assertThat(controller.euxpQuery(EuxpRequestParam.builder().build()).getResult())
                 .isEqualTo("9999");
     }
+    @Test
+    void ScsApiConnectionTest(){
+        assertThat(controller.scsDirectviewQuery(ScsDirectviewRequestDto.builder().build()).getResult())
+                .containsPattern("02[0-9][0-9]");
+    }
+
 }
