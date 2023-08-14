@@ -3,6 +3,7 @@ package com.skb.ft.synopsisservice;
 import com.skb.ft.synopsisservice.api.Controller;
 import com.skb.ft.synopsisservice.domain.euxp.client.EuxpRequestParam;
 import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewRequestDto;
+import com.skb.ft.synopsisservice.domain.smd.client.SmdRequestParam;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,9 @@ public class OpenFeignTest {
         assertThat(controller.scsDirectviewQuery(ScsDirectviewRequestDto.builder().build()).getResult())
                 .containsPattern("02[0-9][0-9]");
     }
-
+    @Test
+    void SmdApiConnectionTest(){
+        assertThat(controller.smdLikeHateQuery(SmdRequestParam.builder().m("getLikeHate").build()).getResult())
+                .isEqualTo("MP-30030");
+    }
 }
