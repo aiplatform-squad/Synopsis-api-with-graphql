@@ -20,7 +20,7 @@ public class Controller {
     private final SmdService smdService;
     private final ScsService scsService;
     @QueryMapping
-    public EuxpSynopsisResponseDto euxpQuery(@Arguments EuxpRequestParam euxpRequestParam){
+    public EuxpSynopsisResponseDto euxpSynopsisQuery(@Arguments EuxpRequestParam euxpRequestParam){
         EuxpSynopsisResponseDto  euxpSynopsisResponseDto = euxpService.callEuxpResponse(euxpRequestParam);
         return euxpSynopsisResponseDto;
     }

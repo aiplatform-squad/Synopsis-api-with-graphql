@@ -17,7 +17,7 @@ public class OpenFeignTest {
     private Controller controller;
     @Test
     void EuxpApiConnectionTest(){
-        assertThat(controller.euxpQuery(EuxpRequestParam.builder().build()).getResult())
+        assertThat(controller.euxpSynopsisQuery(EuxpRequestParam.builder().build()).getResult())
                 .isEqualTo("9999");
     }
     @Test

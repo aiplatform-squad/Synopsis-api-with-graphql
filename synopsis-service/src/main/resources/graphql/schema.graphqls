@@ -1,5 +1,5 @@
 type Query {
-    euxpQuery(
+    euxpSynopsisQuery(
         IF: String
         epsd_id: String!
         menu_stb_svc_id: String!
