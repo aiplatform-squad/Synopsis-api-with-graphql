@@ -13,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Arguments;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 
+import java.util.Map;
+
 @org.springframework.stereotype.Controller
 @RequiredArgsConstructor
 public class Controller {
@@ -34,5 +36,8 @@ public class Controller {
         ScsDirectviewResponseDto scsDirectviewResponseDto=scsService.callScsDirectviewResponse(scsDirectviewRequestDto);
         return  scsDirectviewResponseDto;
     }
-
+    @QueryMapping
+    public Map<String,Object> synopsisPageViewQuery(@Arguments Map<String,Object> m){
+        return null;
+    }
 }

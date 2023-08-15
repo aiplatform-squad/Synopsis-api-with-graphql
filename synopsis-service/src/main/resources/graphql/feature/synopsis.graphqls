@@ -23,7 +23,43 @@ input SynopsisPageViewInput{
 }
 
 type SynopsisPage{
+
+    synopsisInfo: SynopsisInfo
+    synopsisBanner: SynopsisBanner
+    purchaseInfo: PurchaseInfo
+    playInfo: PlayInfo
+
     Euxp: Euxp
     SmdLikeHate: SmdLikeHate
     ScsDirectView: ScsDirectview
+}
+
+type PlayInfo {
+    yn_directView:String
+    preview_url: String
+}
+
+type PurchaseInfo {
+    sale_price_vat: String
+    yn_purchase: String
+    avail_period: String
+}
+
+type SynopsisInfo{
+    title: String
+    like_rate: Float
+    synopsis_content: String
+    release_year: String
+    watch_level: String
+    wat_lvl_cd: Int
+    running_time: String
+    available_resolution: String
+    prize_history: [String]
+    directors: [String]
+    actors: [String]
+}
+
+type SynopsisBanner{
+    banner_text_image:String
+    banner_PLCC:String
 }
