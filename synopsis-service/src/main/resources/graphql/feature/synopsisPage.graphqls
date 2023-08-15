@@ -1,0 +1,29 @@
+input SynopsisPageViewInput{
+    IF: String!
+    stb_id: String!
+    series_id:String
+    mac_address:String
+
+    smd_m: String!
+    smd_total_yn:String
+    smd_version_sw:String!
+
+    epsd_id: String
+    euxp_menu_stb_svc_id: String!
+    euxp_search_type: String!
+    euxp_yn_recent: String
+
+    scs_stb_id:String
+    scs_response_format:String
+    scs_ver:String!
+    scs_hash_id:String!
+    scs_ui_name:String
+    scs_synopsis_type:String!
+    scs_ppv_products:[JSON]!
+}
+
+type SynopsisPage{
+    Euxp: Euxp
+    SmdLikeHate: SmdLikeHate
+    ScsDirectView: ScsDirectview
+}
