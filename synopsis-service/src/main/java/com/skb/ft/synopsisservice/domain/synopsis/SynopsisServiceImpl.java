@@ -68,8 +68,23 @@ public class SynopsisServiceImpl implements SynopsisService{
                                 .build()
                 )
                 .build();
+        if(euxpSynopsisResponseDto.getTotal_banner_count()!=0){
+            synopsisPageResponseDto.setSynopsis_banners(this.banner(euxpSynopsisResponseDto.getBanners()));
+        }
         return synopsisPageResponseDto;
     }
 
+    List<SynopsisBanner> banner(List<Banner> banners){
+    if(banners==null){
+        return null;
+    }
+        List<SynopsisBanner> synopsisBanners=new ArrayList<>();
+        for (Banner b: banners) {
+            synopsisBanners.add(SynopsisBanner.builder()
+                    .banner_off_image_path(b.getBnr_off_img_path())
+                    .banner_on_image_path(b.getBnr_on_img_path()).build());
+        }
+        return synopsisBanners;
+    }
 
 }
