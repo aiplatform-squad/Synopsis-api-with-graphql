@@ -9,7 +9,11 @@ import com.skb.ft.synopsisservice.domain.smd.dto.SmdLikeHateResponseDto;
 import com.skb.ft.synopsisservice.domain.scs.ScsService;
 import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewRequestDto;
 import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewResponseDto;
+import com.skb.ft.synopsisservice.domain.synopsis.SynopsisService;
+import com.skb.ft.synopsisservice.domain.synopsis.dto.SynopsisPageRequestDto;
+import com.skb.ft.synopsisservice.domain.synopsis.dto.SynopsisPageResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.Arguments;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 
@@ -21,6 +25,7 @@ public class Controller {
     private final EuxpService euxpService;
     private final SmdService smdService;
     private final ScsService scsService;
+    private final SynopsisService synopsisService;
     @QueryMapping
     public EuxpSynopsisResponseDto euxpSynopsisQuery(@Arguments EuxpRequestParam euxpRequestParam){
         EuxpSynopsisResponseDto  euxpSynopsisResponseDto = euxpService.callEuxpResponse(euxpRequestParam);
@@ -37,7 +42,8 @@ public class Controller {
         return  scsDirectviewResponseDto;
     }
     @QueryMapping
-    public Map<String,Object> synopsisPageViewQuery(@Arguments Map<String,Object> m){
-        return null;
+    public SynopsisPageResponseDto synopsisPageViewQuery(@Argument SynopsisPageRequestDto inputParam){
+        return synopsisService.getSynopsisPage(inputParam);
+
     }
 }

@@ -31,7 +31,7 @@ type SynopsisPage{
 
     euxpSynopsis: EuxpSynopsis
     smdLikeHate: SmdLikeHate
-    scsDirectView: ScsDirectview
+    scsDirectview: ScsDirectview
 }
 
 type PlayInfo {
