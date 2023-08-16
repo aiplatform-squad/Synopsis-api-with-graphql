@@ -11,6 +11,10 @@ import com.skb.ft.synopsisservice.domain.smd.client.SmdRequestParam;
 import com.skb.ft.synopsisservice.domain.smd.dto.SmdLikeHateResponseDto;
 import com.skb.ft.synopsisservice.domain.synopsis.dto.SynopsisPageRequestDto;
 import com.skb.ft.synopsisservice.domain.synopsis.dto.SynopsisPageResponseDto;
+import com.skb.ft.synopsisservice.domain.synopsis.vo.PlayInfo;
+import com.skb.ft.synopsisservice.domain.synopsis.vo.PurchaseInfo;
+import com.skb.ft.synopsisservice.domain.synopsis.vo.SynopsisInfo;
+import com.skb.ft.synopsisservice.global.common.YN;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -52,12 +56,41 @@ public class SynopsisServiceImpl implements SynopsisService{
                 .stb_id(synopsisPageRequestDto.getScs_stb_id())
                 .version_sw(synopsisPageRequestDto.getSmd_version_sw()).build();
         SmdLikeHateResponseDto smdLikeHateResponseDto= smdService.callSmdLikeHateResponse(smdRequestParam);
-
         //TODO building
-        SynopsisPageResponseDto synopsisPageResponseDto=SynopsisPageResponseDto.builder()
+        SynopsisPageResponseDto synopsisPageResponseDto
+                =SynopsisPageResponseDto.builder()
                 .euxpSynopsis(euxpSynopsisResponseDto)
                 .scsDirectview(scsDirectviewResponseDto)
-                .smdLikeHate(smdLikeHateResponseDto).build();
+                .smdLikeHate(smdLikeHateResponseDto)
+                .synopsisInfo(
+                        SynopsisInfo.builder()
+                                .title(euxpSynopsisResponseDto.getContents().getTitle())
+                                .like_rate(smdLikeHateResponseDto.getLike_rate())
+                                .synopsis_content(euxpSynopsisResponseDto.getContents().getSris_snss_cts())
+                                .release_year(euxpSynopsisResponseDto.getContents().getOpen_yr())
+                                .watch_level(euxpSynopsisResponseDto.getContents().getWat_lvl_cd())
+                                .running_time(Integer.parseInt(euxpSynopsisResponseDto.getContents().getPlay_time()))
+                                .prize_history(euxpSynopsisResponseDto.getContents().getSite_review().getPrize_history())
+                                .directors(euxpSynopsisResponseDto.getContents().getDirector())
+                                .actors(euxpSynopsisResponseDto.getContents().getActor())
+                                .available_resolution(euxpSynopsisResponseDto.getContents().getEpsd_rslu_info().get(0).getRslu_typ_cd())
+                                .build()
+                )
+                .playInfo(
+                        PlayInfo.builder()
+                                .preview_url(euxpSynopsisResponseDto.getContents().getPreview().get(0).getRtsp_cnt_url())
+                                .yn_directView(scsDirectviewResponseDto.getPpv_products().get(0).getYn_directview())
+                                .build())
+                .purchaseInfo(
+                        PurchaseInfo.builder()
+                                .yn_purchase(scsDirectviewResponseDto.getPpv_products().get(0).getYn_purchase())
+                                .avail_period(scsDirectviewResponseDto.getPpv_products().get(0).getPeriod())
+                                .sale_price_vat(euxpSynopsisResponseDto.getPurchares().get(0).getSale_prc_vat())
+                                .build()
+                )
+                .build();
         return synopsisPageResponseDto;
     }
+
+
 }

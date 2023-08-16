@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PurchaseInfo {
-    String sale_price_vat;
+    Double sale_price_vat;
     YN yn_purchase;
     String avail_period;
 }

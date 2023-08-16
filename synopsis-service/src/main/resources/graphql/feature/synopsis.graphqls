@@ -25,7 +25,7 @@ input SynopsisPageViewInput{
 type SynopsisPage{
 
     synopsisInfo: SynopsisInfo
-    synopsisBanner: SynopsisBanner
+    synopsisBanners: [SynopsisBanner]
     purchaseInfo: PurchaseInfo
     playInfo: PlayInfo
 
@@ -51,15 +51,14 @@ type SynopsisInfo{
     synopsis_content: String
     release_year: String
     watch_level: String
-    wat_lvl_cd: Int
     running_time: String
     available_resolution: String
-    prize_history: [String]
-    directors: [String]
-    actors: [String]
+    prize_history: [Object]
+    directors: String
+    actors: String
 }
 
 type SynopsisBanner{
-    banner_text_image:String
-    banner_PLCC:String
+    banner_on_image_path:String
+    banner_off_image_path:String
 }

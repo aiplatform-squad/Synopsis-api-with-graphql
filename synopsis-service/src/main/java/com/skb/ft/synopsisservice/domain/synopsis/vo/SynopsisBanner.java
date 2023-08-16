@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SynopsisBanner {
-    String banner_text_image;
-    String banner_PLCC;
+    String banner_on_image_path;
+    String banner_off_image_path;
 }

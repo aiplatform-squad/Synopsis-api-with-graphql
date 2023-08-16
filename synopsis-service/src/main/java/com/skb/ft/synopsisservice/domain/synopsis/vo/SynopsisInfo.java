@@ -18,7 +18,7 @@ public class SynopsisInfo {
     String watch_level;
     int running_time;
     String available_resolution;
-    List<String> prize_history;
-    List<String> directors;
-    List<String> actors;
+    List<Object> prize_history;
+    String directors;
+    String actors;
 }
