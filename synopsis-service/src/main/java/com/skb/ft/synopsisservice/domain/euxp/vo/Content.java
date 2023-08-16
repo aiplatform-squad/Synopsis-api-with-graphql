@@ -1,18 +1,16 @@
 package com.skb.ft.synopsisservice.domain.euxp.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Contents {
+@Data
+public class Content {
     public String sris_id;
     public String sris_typ_cd;
     public String svc_typ_cd;
@@ -50,7 +48,7 @@ public class Contents {
     public String kids_yn;
     public String lag_capt_typ_exps_yn;
     public String brcast_avl_perd_yn;
-    public Object series_info;
+    public List<Map<String,String>> series_info;
     public ArrayList<Preview> preview;
     public ArrayList<Object> special;
     public String sris_sales_comt_title;
