@@ -6,7 +6,7 @@ type Query {
         search_type: String!
         stb_id: String
         yn_recent: String
-    ): Euxp
+    ): EuxpSynopsis
     smdLikeHateQuery(
         IF: String!
         m: String!
