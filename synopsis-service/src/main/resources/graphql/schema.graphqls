@@ -32,7 +32,7 @@ type Query {
 scalar Date
 scalar JSON
 scalar Object
-enum yn{
+enum YN{
     Y
     N
 }

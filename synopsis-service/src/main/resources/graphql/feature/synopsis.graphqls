@@ -35,7 +35,7 @@ type SynopsisPage{
 }
 
 type PlayInfo {
-    yn_directView:String
+    yn_directView:YN
     preview_url: String
 }
 
