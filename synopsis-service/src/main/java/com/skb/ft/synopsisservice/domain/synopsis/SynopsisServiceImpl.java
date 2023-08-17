@@ -48,7 +48,7 @@ public class SynopsisServiceImpl implements SynopsisService{
                                 .synopsis_content(euxpSynopsisResponseDto.getContents().getSris_snss_cts())
                                 .release_year(euxpSynopsisResponseDto.getContents().getOpen_yr())
                                 .watch_level(euxpSynopsisResponseDto.getContents().getWat_lvl_cd())
-                                .running_time(Integer.parseInt(euxpSynopsisResponseDto.getContents().getPlay_time()))
+                                .running_time(Integer.parseInt(euxpSynopsisResponseDto.getContents().getPlay_tms_val()))
                                 .prize_history(euxpSynopsisResponseDto.getContents().getSite_review().getPrize_history())
                                 .directors(euxpSynopsisResponseDto.getContents().getDirector())
                                 .actors(euxpSynopsisResponseDto.getContents().getActor())
