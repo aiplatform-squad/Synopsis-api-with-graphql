@@ -32,7 +32,7 @@ public class OpenFeignConfig {
                         null
                         ,response.request());
             } else if (HttpStatus.Series.valueOf(response.status()) ==HttpStatus.Series.CLIENT_ERROR) {
-                return new AbortExecutionException(format("%s 요청이 성공하지 못했습니다. Retry 합니다. - status: %s, headers: %s", methodKey, response.status(), response.headers()));
+                return new IllegalArgumentException(format("%s 요청이 성공하지 못했습니다. - status: %s, headers: %s", methodKey, response.status(), response.headers()));
             }
             return new IllegalStateException(format("%s 요청이 성공하지 못했습니다. - status: %s, headers: %s", methodKey, response.status(), response.headers()));
         };
