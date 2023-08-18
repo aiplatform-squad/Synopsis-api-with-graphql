@@ -1,4 +1,4 @@
-type Euxp{
+type EuxpSynopsis{
     IF: String
     banners: [JSON]
     contents: Contents

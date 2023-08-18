@@ -2,6 +2,7 @@ package com.skb.ft.synopsisservice.domain.scs.dto;
 
 import com.skb.ft.synopsisservice.domain.scs.vo.LastWatchInfo;
 import com.skb.ft.synopsisservice.domain.scs.vo.Product;
+import com.skb.ft.synopsisservice.global.common.YN;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,7 +25,7 @@ public class ScsDirectviewResponseDto {
     public String stb_id;
     public String mobile_id;
     public String is_bookmark;
-    public String yn_season_watch_all;
+    public YN yn_season_watch_all;
     public List<Product> ppv_products;
     public List<Product> pps_products;
     public LastWatchInfo last_watch_info;
