@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
     }
 
     @GraphQlExceptionHandler
-    public GraphQLError FeignClientErrorHandle(AbortExecutionException e){
+    public GraphQLError FeignClientErrorHandle(IllegalArgumentException e){
         return GraphQLError.newError().message(e.getMessage()).build();
     }
 
