@@ -9,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.Map;
 
 @Data
 @Builder
@@ -29,4 +28,5 @@ public class ScsDirectviewResponseDto {
     public List<Product> ppv_products;
     public List<Product> pps_products;
     public LastWatchInfo last_watch_info;
+    String errorMessage;
 }

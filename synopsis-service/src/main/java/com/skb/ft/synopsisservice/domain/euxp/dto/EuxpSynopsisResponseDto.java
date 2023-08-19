@@ -21,4 +21,5 @@ public class EuxpSynopsisResponseDto {
     public String response_time;
     public String IF;
     public ArrayList<Banner> banners;
+    String errorMessage;
 }

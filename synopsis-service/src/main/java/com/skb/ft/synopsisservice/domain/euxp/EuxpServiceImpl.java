@@ -5,6 +5,7 @@ import com.skb.ft.synopsisservice.domain.euxp.client.EuxpRequestParam;
 import com.skb.ft.synopsisservice.domain.euxp.dto.EuxpSynopsisResponseDto;
 import com.skb.ft.synopsisservice.domain.euxp.vo.Content;
 import com.skb.ft.synopsisservice.domain.synopsis.dto.SynopsisPageRequestDto;
+import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,13 @@ public class EuxpServiceImpl implements EuxpService{
 
     @Override
     public EuxpSynopsisResponseDto callEuxpResponse(EuxpRequestParam euxpRequestParam) {
-        EuxpSynopsisResponseDto  euxpSynopsisResponseDto =euxpApiClient.requestEuxpSynopsis(euxpRequestParam);
+        EuxpSynopsisResponseDto euxpSynopsisResponseDto;
+        try {
+            euxpSynopsisResponseDto =euxpApiClient.requestEuxpSynopsis(euxpRequestParam);
+        }catch (FeignException e){
+            euxpSynopsisResponseDto=EuxpSynopsisResponseDto.builder()
+                    .errorMessage(e.getMessage()).build();
+        }
         return euxpSynopsisResponseDto;
     }
 
@@ -33,5 +40,4 @@ public class EuxpServiceImpl implements EuxpService{
         EuxpSynopsisResponseDto euxpSynopsisResponseDto= this.callEuxpResponse(euxpRequestParam);
         return euxpSynopsisResponseDto;
     }
-
 }

@@ -41,9 +41,14 @@ public class Controller {
         ScsDirectviewResponseDto scsDirectviewResponseDto=scsService.callScsDirectviewResponse(scsDirectviewRequestDto);
         return  scsDirectviewResponseDto;
     }
+//    @QueryMapping
+//    public SynopsisPageResponseDto synopsisPageViewQuery(@Argument SynopsisPageRequestDto inputParam){
+//        return synopsisService.getSynopsisPage(inputParam);
+//
+//    }
     @QueryMapping
     public SynopsisPageResponseDto synopsisPageViewQuery(@Argument SynopsisPageRequestDto inputParam){
-        return synopsisService.getSynopsisPage(inputParam);
+    return synopsisService.getSynopsisPage(inputParam);
 
-    }
+}
 }

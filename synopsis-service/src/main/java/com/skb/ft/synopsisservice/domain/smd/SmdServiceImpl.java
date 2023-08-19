@@ -5,6 +5,7 @@ import com.skb.ft.synopsisservice.domain.smd.client.SmdRequestParam;
 import com.skb.ft.synopsisservice.domain.smd.dto.SmdLikeHateResponseDto;
 import com.skb.ft.synopsisservice.domain.synopsis.dto.SynopsisPageRequestDto;
 import com.skb.ft.synopsisservice.global.common.YN;
+import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,14 @@ public class SmdServiceImpl implements SmdService{
     private final SmdApiClient smdApiClient;
     @Override
     public SmdLikeHateResponseDto callSmdLikeHateResponse(SmdRequestParam smdRequestParam) {
-        SmdLikeHateResponseDto smdLikeHateResponseDto = smdApiClient.requestSmdGetLikeHate(smdRequestParam);
+        SmdLikeHateResponseDto smdLikeHateResponseDto;
+        try {
+            smdLikeHateResponseDto = smdApiClient.requestSmdGetLikeHate(smdRequestParam);
+        }catch (Exception e){
+           smdLikeHateResponseDto=SmdLikeHateResponseDto.builder()
+                   .errorMessage(e.getMessage()).build();
+           return smdLikeHateResponseDto;
+        }
         if (smdRequestParam.getTotal_yn()== YN.Y){
         int likeTotalNum=Integer.parseInt(smdLikeHateResponseDto.getLike_total());
         int dislikeTotalNum=Integer.parseInt(smdLikeHateResponseDto.getDislike_total());
@@ -24,7 +32,6 @@ public class SmdServiceImpl implements SmdService{
         smdLikeHateResponseDto.setLike_rate(likeRate);}
         return smdLikeHateResponseDto;
     }
-
     @Override
     public SmdLikeHateResponseDto loadSmdSynopsisPage(SynopsisPageRequestDto synopsisPageRequestDto) {
         SmdRequestParam smdRequestParam=SmdRequestParam.builder()
@@ -38,7 +45,6 @@ public class SmdServiceImpl implements SmdService{
         SmdLikeHateResponseDto smdLikeHateResponseDto= this.callSmdLikeHateResponse(smdRequestParam);
         return smdLikeHateResponseDto;
     }
-
     private int calculateLikeRate(int likeTotalNum, int dislikeTotalNum) {
         return Math.round(likeTotalNum*100/(likeTotalNum+dislikeTotalNum));
     }
