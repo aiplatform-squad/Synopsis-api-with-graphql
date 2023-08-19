@@ -79,6 +79,7 @@ public class SynopsisServiceImpl implements SynopsisService{
                 .userActivity(userActivity)
                 .playInfo(playInfo)
                 .purchaseInfo(purchaseInfo)
+                .series(euxpSynopsisResponseDto.getSeries())
                 .build();
 
         if (euxpSynopsisResponseDto.getTotal_banner_count() != 0) {

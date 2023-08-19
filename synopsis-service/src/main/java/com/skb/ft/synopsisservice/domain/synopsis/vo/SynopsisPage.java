@@ -1,6 +1,7 @@
 package com.skb.ft.synopsisservice.domain.synopsis.vo;
 
 import com.skb.ft.synopsisservice.domain.euxp.dto.EuxpSynopsisResponseDto;
+import com.skb.ft.synopsisservice.domain.euxp.vo.Episode;
 import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewResponseDto;
 import com.skb.ft.synopsisservice.domain.smd.dto.SmdLikeHateResponseDto;
 import com.skb.ft.synopsisservice.domain.synopsis.vo.PlayInfo;
@@ -19,15 +20,17 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SynopsisPage {
-    SynopsisType synopsisType;
+    SynopsisType synopsis_type;
     TitleContent title;
     SynopsisInfo synopsisInfo;
     UserActivity userActivity;
     List<SynopsisBanner> synopsis_banners;
     PurchaseInfo purchaseInfo;
     PlayInfo playInfo;
+    List<Episode> series;
     EuxpSynopsisResponseDto euxpSynopsis;
     ScsDirectviewResponseDto scsDirectview;
     SmdLikeHateResponseDto smdLikeHate;
+
 }
 

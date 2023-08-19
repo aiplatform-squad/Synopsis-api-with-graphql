@@ -38,6 +38,7 @@ type SynopsisPage{
     synopsisBanners: [SynopsisBannerEntry]
     purchaseInfo: PurchaseInfoEntry
     playInfo: PlayInfoEntry
+    series: [Object]
 
     euxpSynopsis: EuxpSynopsis
     smdLikeHate: SmdLikeHate
