@@ -7,6 +7,16 @@ spring:
         enabled: true
   config:
     import: optional:file:.env[.properties]
+  cloud:
+    openfeign:
+      client:
+        config:
+          euxpApi:
+            connect-timeout: 3000
+          smdApi:
+            connect-timeout: 3000
+          scsApi:
+            connect-timeout: 48000
 
 
 env:
@@ -24,3 +34,4 @@ logging:
     com.skb.ft.synopsisservice.domain: DEBUG
     org.apache.tomcat: INFO
     org.apache.tomcat.util.net: WARN
+
