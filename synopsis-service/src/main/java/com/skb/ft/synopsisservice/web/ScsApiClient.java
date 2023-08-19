@@ -1,4 +1,4 @@
-package com.skb.ft.synopsisservice.domain.scs.client;
+package com.skb.ft.synopsisservice.web;
 
 import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewRequestDto;
 import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewResponseDto;

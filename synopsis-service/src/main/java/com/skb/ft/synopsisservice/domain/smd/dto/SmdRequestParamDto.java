@@ -1,12 +1,12 @@
-package com.skb.ft.synopsisservice.domain.smd.client;
+package com.skb.ft.synopsisservice.domain.smd.dto;
 
-import com.skb.ft.synopsisservice.global.common.YN;
+import com.skb.ft.synopsisservice.domain.common.YN;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
-public class SmdRequestParam {
+public class SmdRequestParamDto {
     String stb_id;
     String IF;
     String m;

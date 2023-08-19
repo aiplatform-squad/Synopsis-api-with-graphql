@@ -1,3 +1,8 @@
+type SynopsisPageViewQueryResult{
+    result: [Result]
+    synopsisPage: SynopsisPage
+}
+
 input SynopsisPageViewInput{
     IF: String
     stb_id: String
@@ -24,31 +29,58 @@ input SynopsisPageViewInput{
 
 type SynopsisPage{
 
-    synopsisInfo: SynopsisInfo
-    synopsisBanners: [SynopsisBanner]
-    purchaseInfo: PurchaseInfo
-    playInfo: PlayInfo
+    synopsis_type: synopsisType
+
+    title: TitleEntry
+
+    synopsisInfo: SynopsisInfoEntry
+    userActivity: UserActivityEntry
+    synopsisBanners: [SynopsisBannerEntry]
+    purchaseInfo: PurchaseInfoEntry
+    playInfo: PlayInfoEntry
+    series: [Object]
 
     euxpSynopsis: EuxpSynopsis
     smdLikeHate: SmdLikeHate
     scsDirectview: ScsDirectview
 }
 
-type PlayInfo {
-    yn_directView:String
-    preview_url: String
+type UserActivityEntry{
+    yn_like: YN
+    yn_dislike: YN
+    yn_bookmark:YN
 }
 
-type PurchaseInfo {
+type TitleEntry {
+    title_img: String
+    title_txt: String
+}
+
+enum synopsisType{
+    SHORTS
+    SEASON
+}
+
+type PlayInfoEntry {
+    yn_directView:YN
+    trailer_url: String
+    stillCuts: [StillCutEntry]
+    three_min_preview_url: String
+    cw_call_id: String
+}
+
+type PurchaseInfoEntry {
     sale_price_vat: String
     yn_purchase: String
     avail_period: String
 }
 
-type SynopsisInfo{
-    title: String
+type SynopsisInfoEntry{
     like_rate: Float
-    synopsis_content: String
+    btv_like_rate: Float
+    tmdb_like_rate:Float
+    site_reviews: [SitesEntry]
+    summary: String
     release_year: String
     watch_level: String
     running_time: String
@@ -58,7 +90,9 @@ type SynopsisInfo{
     actors: String
 }
 
-type SynopsisBanner{
+type SynopsisBannerEntry{
     banner_on_image_path:String
     banner_off_image_path:String
+    banner_typ_code: String
+    call_url: String
 }

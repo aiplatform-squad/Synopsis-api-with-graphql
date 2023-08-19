@@ -1,7 +1,7 @@
 package com.skb.ft.synopsisservice.domain.synopsis.dto;
 
 import com.skb.ft.synopsisservice.domain.scs.dto.PpvProductRequestDto;
-import com.skb.ft.synopsisservice.global.common.YN;
+import com.skb.ft.synopsisservice.domain.common.YN;
 import lombok.Builder;
 import lombok.Data;
 

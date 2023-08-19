@@ -1,7 +1,6 @@
 package com.skb.ft.synopsisservice;
 
 import com.skb.ft.synopsisservice.api.Controller;
-import com.skb.ft.synopsisservice.domain.euxp.client.EuxpRequestParam;
 import com.skb.ft.synopsisservice.domain.synopsis.dto.SynopsisPageRequestDto;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -17,15 +16,15 @@ public class SynopsisApiTest {
     private Controller controller;
     @Test void SynopsisEuxpDataValid(){
         assertThat(controller.synopsisPageViewQuery(SynopsisPageRequestDto.builder().smd_m("getLikeHate")
-                .build()).getEuxpSynopsis().getResult()).isEqualTo("9999");
+                .build()).getSynopsisPage().getEuxpSynopsis().getResult()).isEqualTo("9999");
     }
     @Test void SynopsisScsDataValid(){
         assertThat(controller.synopsisPageViewQuery(SynopsisPageRequestDto.builder().smd_m("getLikeHate")
-                .build()).getScsDirectview().getResult()).containsPattern("02[0-9][0-9]");
+                .build()).getSynopsisPage().getScsDirectview().getResult()).containsPattern("02[0-9][0-9]");
     }
 @Test void SynopsisSmdDataValid(){
     assertThat(controller.synopsisPageViewQuery(SynopsisPageRequestDto.builder().smd_m("getLikeHate")
-            .build()).getSmdLikeHate().getResult()).containsPattern("MP-30030");
+            .build()).getSynopsisPage().getSmdLikeHate().getResult()).containsPattern("MP-30030");
 }
 
 }

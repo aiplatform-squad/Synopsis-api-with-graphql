@@ -258,13 +258,7 @@ type BtvPntInfoEntry {
 }
 
 type StillCutEntry {
-    avg_pnt: Float
-    bas_pnt: Int
-    dist_info: [DistInfoEntry]
-    review_cnt: Int
-    reviews: [JSON]
-    site_cd: Int
-    site_nm: String
+    img_path:String
 }
 
 type DistInfoEntry {

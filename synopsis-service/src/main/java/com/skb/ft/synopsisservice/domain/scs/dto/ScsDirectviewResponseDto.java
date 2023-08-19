@@ -2,14 +2,13 @@ package com.skb.ft.synopsisservice.domain.scs.dto;
 
 import com.skb.ft.synopsisservice.domain.scs.vo.LastWatchInfo;
 import com.skb.ft.synopsisservice.domain.scs.vo.Product;
-import com.skb.ft.synopsisservice.global.common.YN;
+import com.skb.ft.synopsisservice.domain.common.YN;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.Map;
 
 @Data
 @Builder
@@ -29,4 +28,5 @@ public class ScsDirectviewResponseDto {
     public List<Product> ppv_products;
     public List<Product> pps_products;
     public LastWatchInfo last_watch_info;
+    String errorMessage;
 }

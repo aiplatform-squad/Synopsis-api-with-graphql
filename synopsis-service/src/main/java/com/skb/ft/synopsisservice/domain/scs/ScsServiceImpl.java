@@ -1,9 +1,10 @@
 package com.skb.ft.synopsisservice.domain.scs;
 
-import com.skb.ft.synopsisservice.domain.scs.client.ScsApiClient;
+import com.skb.ft.synopsisservice.web.ScsApiClient;
 import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewRequestDto;
 import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewResponseDto;
 import com.skb.ft.synopsisservice.domain.synopsis.dto.SynopsisPageRequestDto;
+import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,15 @@ public class ScsServiceImpl implements ScsService{
     private final ScsApiClient scsApiClient;
     @Override
     public ScsDirectviewResponseDto callScsDirectviewResponse(ScsDirectviewRequestDto scsDirectviewRequestDto) {
-        ScsDirectviewResponseDto scsDirectviewResponseDto = scsApiClient.requestScsDirectview(scsDirectviewRequestDto);
+        ScsDirectviewResponseDto scsDirectviewResponseDto;
+        try {
+            scsDirectviewResponseDto = scsApiClient.requestScsDirectview(scsDirectviewRequestDto);
+        }catch (FeignException e){
+            scsDirectviewResponseDto=ScsDirectviewResponseDto.builder()
+                    .errorMessage(e.getMessage()).build();
+        }
         return scsDirectviewResponseDto;
     }
-
     @Override
     public ScsDirectviewResponseDto loadSmdSynopsisPage(SynopsisPageRequestDto synopsisPageRequestDto) {
         ScsDirectviewRequestDto scsDirectviewRequestDto = ScsDirectviewRequestDto.builder()

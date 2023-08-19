@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PurchaseInfo {
-    Double sale_price_vat;
-    YN yn_purchase;
-    String avail_period;
+public class UserActivity {
+    YN yn_like;
+    YN yn_dislike;
+    YN yn_bookmark;
 }

@@ -12,4 +12,6 @@ import lombok.NoArgsConstructor;
 public class SynopsisBanner {
     String banner_on_image_path;
     String banner_off_image_path;
+    String banner_typ_code;
+    String call_url;
 }
