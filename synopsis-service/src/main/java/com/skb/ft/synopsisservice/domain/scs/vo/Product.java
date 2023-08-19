@@ -1,6 +1,6 @@
 package com.skb.ft.synopsisservice.domain.scs.vo;
 
-import com.skb.ft.synopsisservice.global.common.YN;
+import com.skb.ft.synopsisservice.domain.common.YN;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

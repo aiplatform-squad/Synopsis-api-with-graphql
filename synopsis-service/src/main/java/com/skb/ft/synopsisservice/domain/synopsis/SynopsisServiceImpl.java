@@ -14,9 +14,9 @@ import com.skb.ft.synopsisservice.domain.synopsis.vo.PlayInfo;
 import com.skb.ft.synopsisservice.domain.synopsis.vo.PurchaseInfo;
 import com.skb.ft.synopsisservice.domain.synopsis.vo.SynopsisBanner;
 import com.skb.ft.synopsisservice.domain.synopsis.vo.SynopsisInfo;
-import com.skb.ft.synopsisservice.global.common.FailResult;
-import com.skb.ft.synopsisservice.global.common.Result;
-import com.skb.ft.synopsisservice.global.common.SuccessResult;
+import com.skb.ft.synopsisservice.domain.common.FailResult;
+import com.skb.ft.synopsisservice.domain.common.Result;
+import com.skb.ft.synopsisservice.domain.common.SuccessResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

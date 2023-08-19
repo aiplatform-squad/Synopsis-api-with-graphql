@@ -1,4 +1,4 @@
-package com.skb.ft.synopsisservice.global.common;
+package com.skb.ft.synopsisservice.domain.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

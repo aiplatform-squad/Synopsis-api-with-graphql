@@ -27,13 +27,13 @@ public class Controller {
     private final ScsService scsService;
     private final SynopsisService synopsisService;
     @QueryMapping
-    public EuxpSynopsisResponseDto euxpSynopsisQuery(@Arguments EuxpRequestParam euxpRequestParam){
-        EuxpSynopsisResponseDto  euxpSynopsisResponseDto = euxpService.callEuxpResponse(euxpRequestParam);
+    public EuxpSynopsisResponseDto euxpSynopsisQuery(@Arguments EuxpRequestParamDto euxpRequestParamDto){
+        EuxpSynopsisResponseDto  euxpSynopsisResponseDto = euxpService.callEuxpResponse(euxpRequestParamDto);
         return euxpSynopsisResponseDto;
     }
     @QueryMapping
-    public SmdLikeHateResponseDto smdLikeHateQuery(@Arguments SmdRequestParam smdRequestParam){
-        SmdLikeHateResponseDto smdLikeHateResponseDto = smdService.callSmdLikeHateResponse(smdRequestParam);
+    public SmdLikeHateResponseDto smdLikeHateQuery(@Arguments SmdRequestParamDto smdRequestParamDto){
+        SmdLikeHateResponseDto smdLikeHateResponseDto = smdService.callSmdLikeHateResponse(smdRequestParamDto);
         return smdLikeHateResponseDto;
     }
     @QueryMapping
@@ -48,7 +48,6 @@ public class Controller {
 //    }
     @QueryMapping
     public SynopsisPageResponseDto synopsisPageViewQuery(@Argument SynopsisPageRequestDto inputParam){
-    return synopsisService.getSynopsisPage(inputParam);
-
-}
+    return synopsisService.getSynopsisPage(inputParam)
+    }
 }

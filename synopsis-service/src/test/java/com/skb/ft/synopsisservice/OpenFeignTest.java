@@ -1,9 +1,9 @@
 package com.skb.ft.synopsisservice;
 
 import com.skb.ft.synopsisservice.api.Controller;
-import com.skb.ft.synopsisservice.domain.euxp.client.EuxpRequestParam;
+import com.skb.ft.synopsisservice.domain.euxp.dto.EuxpRequestParamDto;
 import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewRequestDto;
-import com.skb.ft.synopsisservice.domain.smd.client.SmdRequestParam;
+import com.skb.ft.synopsisservice.domain.smd.dto.SmdRequestParamDto;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class OpenFeignTest {
     private Controller controller;
     @Test
     void EuxpApiConnectionTest(){
-        assertThat(controller.euxpSynopsisQuery(EuxpRequestParam.builder().build()).getResult())
+        assertThat(controller.euxpSynopsisQuery(EuxpRequestParamDto.builder().build()).getResult())
                 .isEqualTo("9999");
     }
     @Test
@@ -27,7 +27,7 @@ public class OpenFeignTest {
     }
     @Test
     void SmdApiConnectionTest(){
-        assertThat(controller.smdLikeHateQuery(SmdRequestParam.builder().m("getLikeHate").build()).getResult())
+        assertThat(controller.smdLikeHateQuery(SmdRequestParamDto.builder().m("getLikeHate").build()).getResult())
                 .isEqualTo("MP-30030");
     }
 }

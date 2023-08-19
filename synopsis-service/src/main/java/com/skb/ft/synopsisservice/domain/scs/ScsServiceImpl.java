@@ -1,6 +1,6 @@
 package com.skb.ft.synopsisservice.domain.scs;
 
-import com.skb.ft.synopsisservice.domain.scs.client.ScsApiClient;
+import com.skb.ft.synopsisservice.web.ScsApiClient;
 import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewRequestDto;
 import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewResponseDto;
 import com.skb.ft.synopsisservice.domain.synopsis.dto.SynopsisPageRequestDto;
