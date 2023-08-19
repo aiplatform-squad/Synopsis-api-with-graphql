@@ -43,6 +43,6 @@ public class Controller {
     @MeasureExecutionTime
     @QueryMapping
     public SynopsisPageResponseDto synopsisPageViewQuery(@Argument SynopsisPageRequestDto inputParam){
-    return synopsisService.getSynopsisPage(inputParam)
+    return synopsisService.getSynopsisPage(inputParam);
     }
 }
