@@ -1,27 +1,26 @@
 package com.skb.ft.synopsisservice.domain.synopsis;
 
 import com.skb.ft.synopsisservice.domain.euxp.EuxpService;
-import com.skb.ft.synopsisservice.domain.euxp.client.EuxpRequestParam;
 import com.skb.ft.synopsisservice.domain.euxp.dto.EuxpSynopsisResponseDto;
 import com.skb.ft.synopsisservice.domain.euxp.vo.Banner;
 import com.skb.ft.synopsisservice.domain.scs.ScsService;
-import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewRequestDto;
 import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewResponseDto;
 import com.skb.ft.synopsisservice.domain.smd.SmdService;
-import com.skb.ft.synopsisservice.domain.smd.client.SmdRequestParam;
 import com.skb.ft.synopsisservice.domain.smd.dto.SmdLikeHateResponseDto;
 import com.skb.ft.synopsisservice.domain.synopsis.dto.SynopsisPageRequestDto;
 import com.skb.ft.synopsisservice.domain.synopsis.dto.SynopsisPageResponseDto;
+import com.skb.ft.synopsisservice.domain.synopsis.vo.SynopsisPage;
 import com.skb.ft.synopsisservice.domain.synopsis.vo.PlayInfo;
 import com.skb.ft.synopsisservice.domain.synopsis.vo.PurchaseInfo;
 import com.skb.ft.synopsisservice.domain.synopsis.vo.SynopsisBanner;
 import com.skb.ft.synopsisservice.domain.synopsis.vo.SynopsisInfo;
-import com.skb.ft.synopsisservice.global.common.YN;
+import com.skb.ft.synopsisservice.global.common.FailResult;
+import com.skb.ft.synopsisservice.global.common.Result;
+import com.skb.ft.synopsisservice.global.common.SuccessResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -33,11 +32,41 @@ public class SynopsisServiceImpl implements SynopsisService{
 @Override
     public SynopsisPageResponseDto getSynopsisPage(SynopsisPageRequestDto synopsisPageRequestDto) {
         EuxpSynopsisResponseDto euxpSynopsisResponseDto= euxpService.loadEuxpSynopsisPage(synopsisPageRequestDto);
-        ScsDirectviewResponseDto scsDirectviewResponseDto=scsService.loadSmdSynopsisPage(synopsisPageRequestDto);
+        ScsDirectviewResponseDto scsDirectviewResponseDto =scsService.loadSmdSynopsisPage(synopsisPageRequestDto);
         SmdLikeHateResponseDto smdLikeHateResponseDto= smdService.loadSmdSynopsisPage(synopsisPageRequestDto);
 
-        SynopsisPageResponseDto synopsisPageResponseDto
-                =SynopsisPageResponseDto.builder()
+        List<Result> resultList= new ArrayList<>();
+
+    //EuxpResult 생성
+        Result euxpResult=Result.builder()
+                .api("euxpSynmopsisApi").result(euxpSynopsisResponseDto.getResult()).reason(euxpSynopsisResponseDto.getReason()).build();
+        if(Objects.isNull(euxpSynopsisResponseDto.getErrorMessage())){
+            resultList.add(new SuccessResult(euxpResult));
+        }else{
+            resultList.add(new FailResult(euxpResult, euxpSynopsisResponseDto.getErrorMessage()));
+        }
+
+        //SCS
+    Result smdResult=Result.builder()
+            .api("smdLikeHateApi").result(smdLikeHateResponseDto.getResult()).reason(smdLikeHateResponseDto.getReason()).build();
+    if(Objects.isNull(smdLikeHateResponseDto.getErrorMessage())){
+        resultList.add(new SuccessResult(smdResult));
+    }else{
+        resultList.add(new FailResult(smdResult, smdLikeHateResponseDto.getErrorMessage()));
+    }
+
+    //scs
+    Result scsResult=Result.builder()
+            .api("scsDirectviewApi").result(scsDirectviewResponseDto.getResult()).reason(scsDirectviewResponseDto.getReason()).build();
+    if(Objects.isNull(scsDirectviewResponseDto.getErrorMessage())){
+        resultList.add(new SuccessResult(scsResult));
+    }else{
+        resultList.add(new FailResult(scsResult, scsDirectviewResponseDto.getErrorMessage()));
+    }
+
+
+        SynopsisPage synopsisPage
+                = SynopsisPage.builder()
                 .euxpSynopsis(euxpSynopsisResponseDto)
                 .scsDirectview(scsDirectviewResponseDto)
                 .smdLikeHate(smdLikeHateResponseDto)
@@ -69,11 +98,13 @@ public class SynopsisServiceImpl implements SynopsisService{
                 )
                 .build();
         if(euxpSynopsisResponseDto.getTotal_banner_count()!=0){
-            synopsisPageResponseDto.setSynopsis_banners(this.banner(euxpSynopsisResponseDto.getBanners()));
+            synopsisPage.setSynopsis_banners(this.banner(euxpSynopsisResponseDto.getBanners()));
         }
+        SynopsisPageResponseDto synopsisPageResponseDto=SynopsisPageResponseDto.builder()
+                .result(resultList)
+                .synopsisPage(null).build();
         return synopsisPageResponseDto;
     }
-
     List<SynopsisBanner> banner(List<Banner> banners){
     if(banners==null){
         return null;

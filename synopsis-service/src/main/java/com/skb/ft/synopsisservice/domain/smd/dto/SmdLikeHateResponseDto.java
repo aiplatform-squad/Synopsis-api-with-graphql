@@ -20,4 +20,5 @@ public class SmdLikeHateResponseDto {
     public String dislike_total;
     public String updateDate_total;
     public int like_rate;
+    String errorMessage;
 }
