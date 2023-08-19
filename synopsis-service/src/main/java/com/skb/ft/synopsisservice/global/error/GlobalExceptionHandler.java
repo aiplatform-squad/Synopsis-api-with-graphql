@@ -16,20 +16,8 @@ public class GlobalExceptionHandler {
     public GraphQLError bindErrorHandle(BindException ex) {
         return GraphQLError.newError().errorType(ErrorType.BAD_REQUEST).message("데이터 바인드 과정이 옳지 않습니다").build();
     }
-
     @GraphQlExceptionHandler
-    public GraphQLError FeignServerErrorHandle(RetryableException e){
+    public GraphQLError GraphQlError(Exception e){
         return GraphQLError.newError().message(e.getMessage()).build();
     }
-
-    @GraphQlExceptionHandler
-    public GraphQLError FeignClientErrorHandle(IllegalArgumentException e){
-        return GraphQLError.newError().message(e.getMessage()).build();
-    }
-
-    @GraphQlExceptionHandler
-    public GraphQLError FeignExtraErrorHandle(IllegalStateException e){
-        return GraphQLError.newError().message(e.getMessage()).build();
-    }
-
 }
