@@ -26,7 +26,25 @@ type Query {
         synopsis_type:String!
         ppv_products:[JSON]!
     ):ScsDirectview
-    synopsisPageViewQuery(inputParam: SynopsisPageViewInput):SynopsisPage
+    synopsisPageViewQuery(inputParam: SynopsisPageViewInput):SynopsisPageViewQueryResult
+}
+
+interface Result{
+    api:String
+    result:String
+    reason:String
+}
+
+type SuccessResult implements Result{
+    api:String
+    reason:String
+    result:String
+}
+type FailResult implements Result{
+    api:String
+    reason:String
+    result:String
+    errorMessage:String
 }
 
 scalar Date
