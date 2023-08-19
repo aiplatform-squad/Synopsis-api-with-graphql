@@ -2,6 +2,7 @@ package com.skb.ft.synopsisservice.domain.euxp.dto;
 
 import com.skb.ft.synopsisservice.domain.euxp.vo.Banner;
 import com.skb.ft.synopsisservice.domain.euxp.vo.Content;
+import com.skb.ft.synopsisservice.domain.euxp.vo.Episode;
 import com.skb.ft.synopsisservice.domain.euxp.vo.Purchare;
 import lombok.*;
 
@@ -16,7 +17,7 @@ public class EuxpSynopsisResponseDto {
     public String request_time;
     public Content contents;
     public ArrayList<Purchare> purchares;
-    public ArrayList<Object> series;
+    public ArrayList<Episode> series;
     public int total_banner_count;
     public String response_time;
     public String IF;

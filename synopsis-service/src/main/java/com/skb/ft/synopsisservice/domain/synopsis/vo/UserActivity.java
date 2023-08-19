@@ -1,5 +1,6 @@
 package com.skb.ft.synopsisservice.domain.synopsis.vo;
 
+import com.skb.ft.synopsisservice.global.common.YN;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,9 +10,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SynopsisBanner {
-    String banner_on_image_path;
-    String banner_off_image_path;
-    String banner_typ_code;
-    String call_url;
+public class UserActivity {
+    YN yn_like;
+    YN yn_dislike;
+    YN yn_bookmark;
 }

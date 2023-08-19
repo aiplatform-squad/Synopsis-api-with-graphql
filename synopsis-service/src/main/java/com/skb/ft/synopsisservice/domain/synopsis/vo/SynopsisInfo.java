@@ -1,5 +1,6 @@
 package com.skb.ft.synopsisservice.domain.synopsis.vo;
 
+import com.skb.ft.synopsisservice.domain.euxp.vo.Site;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,9 +12,11 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SynopsisInfo {
-    String title;
     float like_rate;
-    String synopsis_content;
+    double btv_like_rate;
+    double tmdb_like_rate;
+    List<Site> site_reviews;
+    String summary;
     String release_year;
     String watch_level;
     int running_time;

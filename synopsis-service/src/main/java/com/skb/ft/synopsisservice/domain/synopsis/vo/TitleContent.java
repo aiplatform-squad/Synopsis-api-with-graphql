@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SynopsisBanner {
-    String banner_on_image_path;
-    String banner_off_image_path;
-    String banner_typ_code;
-    String call_url;
+public class TitleContent {
+    String title_img;
+    String title_txt;
 }
