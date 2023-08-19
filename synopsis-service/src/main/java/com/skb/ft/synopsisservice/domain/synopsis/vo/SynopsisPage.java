@@ -19,7 +19,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SynopsisPage {
+    SynopsisType synopsisType;
+    TitleContent title;
     SynopsisInfo synopsisInfo;
+    UserActivity userActivity;
     List<SynopsisBanner> synopsis_banners;
     PurchaseInfo purchaseInfo;
     PlayInfo playInfo;
@@ -27,3 +30,4 @@ public class SynopsisPage {
     ScsDirectviewResponseDto scsDirectview;
     SmdLikeHateResponseDto smdLikeHate;
 }
+

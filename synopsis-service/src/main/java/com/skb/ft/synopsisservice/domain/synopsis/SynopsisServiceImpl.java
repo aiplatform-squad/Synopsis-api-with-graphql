@@ -3,20 +3,18 @@ package com.skb.ft.synopsisservice.domain.synopsis;
 import com.skb.ft.synopsisservice.domain.euxp.EuxpService;
 import com.skb.ft.synopsisservice.domain.euxp.dto.EuxpSynopsisResponseDto;
 import com.skb.ft.synopsisservice.domain.euxp.vo.Banner;
+import com.skb.ft.synopsisservice.domain.euxp.vo.Content;
 import com.skb.ft.synopsisservice.domain.scs.ScsService;
 import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewResponseDto;
 import com.skb.ft.synopsisservice.domain.smd.SmdService;
 import com.skb.ft.synopsisservice.domain.smd.dto.SmdLikeHateResponseDto;
 import com.skb.ft.synopsisservice.domain.synopsis.dto.SynopsisPageRequestDto;
 import com.skb.ft.synopsisservice.domain.synopsis.dto.SynopsisPageResponseDto;
-import com.skb.ft.synopsisservice.domain.synopsis.vo.SynopsisPage;
-import com.skb.ft.synopsisservice.domain.synopsis.vo.PlayInfo;
-import com.skb.ft.synopsisservice.domain.synopsis.vo.PurchaseInfo;
-import com.skb.ft.synopsisservice.domain.synopsis.vo.SynopsisBanner;
-import com.skb.ft.synopsisservice.domain.synopsis.vo.SynopsisInfo;
+import com.skb.ft.synopsisservice.domain.synopsis.vo.*;
 import com.skb.ft.synopsisservice.global.common.FailResult;
 import com.skb.ft.synopsisservice.global.common.Result;
 import com.skb.ft.synopsisservice.global.common.SuccessResult;
+import com.skb.ft.synopsisservice.global.common.YN;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -65,15 +63,20 @@ public class SynopsisServiceImpl implements SynopsisService {
         }
 
         SynopsisInfo synopsisInfo = this.buildSynopsisInfo(euxpSynopsisResponseDto, smdLikeHateResponseDto);
-        PlayInfo playInfo = this.builePlayInfo(euxpSynopsisResponseDto, scsDirectviewResponseDto);
-        PurchaseInfo purchaseInfo = this.purchaseInfo(euxpSynopsisResponseDto, scsDirectviewResponseDto);
+        PlayInfo playInfo = this.buildPlayInfo(euxpSynopsisResponseDto, scsDirectviewResponseDto);
+        PurchaseInfo purchaseInfo = this.buildPurchaseInfo(euxpSynopsisResponseDto, scsDirectviewResponseDto);
+        TitleContent title=this.buildTitle(euxpSynopsisResponseDto);
+        UserActivity userActivity=this.buildUserActivity(smdLikeHateResponseDto);
 
-        SynopsisPage synopsisPage
-                = SynopsisPage.builder()
+
+        SynopsisPage synopsisPage = SynopsisPage.builder()
                 .euxpSynopsis(euxpSynopsisResponseDto)
                 .scsDirectview(scsDirectviewResponseDto)
                 .smdLikeHate(smdLikeHateResponseDto)
+                .synopsisType(Objects.isNull(euxpSynopsisResponseDto.getSeries())? SynopsisType.SHORTS:SynopsisType.SEASON)
+                .title(title)
                 .synopsisInfo(synopsisInfo)
+                .userActivity(userActivity)
                 .playInfo(playInfo)
                 .purchaseInfo(purchaseInfo)
                 .build();
@@ -91,16 +94,19 @@ public class SynopsisServiceImpl implements SynopsisService {
     public SynopsisInfo buildSynopsisInfo(EuxpSynopsisResponseDto euxpSynopsisResponseDto, SmdLikeHateResponseDto smdLikeHateResponseDto) {
         SynopsisInfo synopsisInfo;
         if (Objects.isNull(euxpSynopsisResponseDto.getErrorMessage()) && "0000".equals(euxpSynopsisResponseDto.getResult())) {
+            Content contents=euxpSynopsisResponseDto.getContents();
             synopsisInfo = SynopsisInfo.builder()
-                    .title(euxpSynopsisResponseDto.getContents().getTitle())
-                    .synopsis_content(euxpSynopsisResponseDto.getContents().getSris_snss_cts())
-                    .release_year(euxpSynopsisResponseDto.getContents().getOpen_yr())
-                    .watch_level(euxpSynopsisResponseDto.getContents().getWat_lvl_cd())
-                    .running_time(Integer.parseInt(euxpSynopsisResponseDto.getContents().getPlay_tms_val()))
-                    .prize_history(euxpSynopsisResponseDto.getContents().getSite_review().getPrize_history())
-                    .directors(euxpSynopsisResponseDto.getContents().getDirector())
-                    .actors(euxpSynopsisResponseDto.getContents().getActor())
-                    .available_resolution(euxpSynopsisResponseDto.getContents().getEpsd_rslu_info().get(0).getRslu_typ_cd())
+                    .summary(contents.getSris_snss_cts())
+                    .release_year(contents.getOpen_yr())
+                    .watch_level(contents.getWat_lvl_cd())
+                    .running_time(Integer.parseInt(contents.getPlay_tms_val()))
+                    .prize_history(contents.getSite_review().getPrize_history())
+                    .directors(contents.getDirector())
+                    .actors(contents.getActor())
+                    .available_resolution(contents.getEpsd_rslu_info().get(0).getRslu_typ_cd())
+                    .btv_like_rate(contents.getSite_review().getBtv_pnt_info().get(0).getBtv_like_rate())
+                    .tmdb_like_rate(contents.getSite_review().getTmdb_pnt_info().getTmdb_pnt())
+                    .site_reviews(contents.getSite_review().getSites())
                     .build();
         } else {
             synopsisInfo = SynopsisInfo.builder().build();
@@ -112,11 +118,14 @@ public class SynopsisServiceImpl implements SynopsisService {
     }
 
     @Override
-    public PlayInfo builePlayInfo(EuxpSynopsisResponseDto euxpSynopsisResponseDto, ScsDirectviewResponseDto scsDirectviewResponseDto) {
+    public PlayInfo buildPlayInfo(EuxpSynopsisResponseDto euxpSynopsisResponseDto, ScsDirectviewResponseDto scsDirectviewResponseDto) {
         PlayInfo playInfo;
         if (Objects.isNull(euxpSynopsisResponseDto.getErrorMessage()) && "0000".equals(euxpSynopsisResponseDto.getResult())) {
             playInfo = PlayInfo.builder()
-                    .preview_url(euxpSynopsisResponseDto.getContents().getPreview().get(0).getRtsp_cnt_url())
+                    .trailer_url(euxpSynopsisResponseDto.getContents().getPreview().get(0).getRtsp_cnt_url())
+                    .stillCuts(euxpSynopsisResponseDto.getContents().getStillCut())
+                    .three_min_preview_url(euxpSynopsisResponseDto.getContents().getPreview().get(0).rtsp_cnt_url)
+                    .cw_call_id(euxpSynopsisResponseDto.getContents().getCw_call_id())
                     .build();
         }else{
             playInfo=PlayInfo.builder().build();
@@ -128,7 +137,7 @@ public class SynopsisServiceImpl implements SynopsisService {
     }
 
     @Override
-    public PurchaseInfo purchaseInfo(EuxpSynopsisResponseDto euxpSynopsisResponseDto, ScsDirectviewResponseDto scsDirectviewResponseDto) {
+    public PurchaseInfo buildPurchaseInfo(EuxpSynopsisResponseDto euxpSynopsisResponseDto, ScsDirectviewResponseDto scsDirectviewResponseDto) {
         PurchaseInfo purchaseInfo;
         if (Objects.isNull(euxpSynopsisResponseDto.getErrorMessage()) && "0000".equals(euxpSynopsisResponseDto.getResult())) {
             purchaseInfo=PurchaseInfo.builder()
@@ -144,6 +153,30 @@ public class SynopsisServiceImpl implements SynopsisService {
         return purchaseInfo;
     }
 
+    @Override
+    public TitleContent buildTitle(EuxpSynopsisResponseDto euxpSynopsisResponseDto) {
+        TitleContent titleContent;
+        if (Objects.isNull(euxpSynopsisResponseDto.getErrorMessage()) && "0000".equals(euxpSynopsisResponseDto.getResult())) {
+            titleContent= TitleContent.builder().title_img(euxpSynopsisResponseDto.getContents().getTitle()).title_txt(euxpSynopsisResponseDto.getContents().getTitle_img_path()).build();
+        }else{
+            titleContent=null;
+        }
+        return titleContent;
+    }
+
+    @Override
+    public UserActivity buildUserActivity(SmdLikeHateResponseDto smdLikeHateResponseDto) {
+        UserActivity userActivity;
+        if (Objects.isNull(smdLikeHateResponseDto.getErrorMessage()) && "OK".equals(smdLikeHateResponseDto.getResult())) {
+            userActivity=UserActivity.builder().yn_like(smdLikeHateResponseDto.getLike().equals("1")? YN.Y:YN.N)
+                    .yn_dislike(smdLikeHateResponseDto.getDislike().equals("1")? YN.Y:YN.N)
+                    .build();
+        }else{
+            userActivity=null;
+        }
+        return userActivity;
+    }
+
     List<SynopsisBanner> banner(List<Banner> banners) {
         if (banners == null) {
             return null;
@@ -152,7 +185,9 @@ public class SynopsisServiceImpl implements SynopsisService {
         for (Banner b : banners) {
             synopsisBanners.add(SynopsisBanner.builder()
                     .banner_off_image_path(b.getBnr_off_img_path())
-                    .banner_on_image_path(b.getBnr_on_img_path()).build());
+                    .banner_on_image_path(b.getBnr_on_img_path())
+                    .banner_typ_code(b.getBnr_typ_cd())
+                    .call_url(b.getCall_url()).build());
         }
         return synopsisBanners;
     }

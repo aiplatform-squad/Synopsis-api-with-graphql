@@ -5,9 +5,7 @@ import com.skb.ft.synopsisservice.domain.scs.dto.ScsDirectviewResponseDto;
 import com.skb.ft.synopsisservice.domain.smd.dto.SmdLikeHateResponseDto;
 import com.skb.ft.synopsisservice.domain.synopsis.dto.SynopsisPageRequestDto;
 import com.skb.ft.synopsisservice.domain.synopsis.dto.SynopsisPageResponseDto;
-import com.skb.ft.synopsisservice.domain.synopsis.vo.PlayInfo;
-import com.skb.ft.synopsisservice.domain.synopsis.vo.PurchaseInfo;
-import com.skb.ft.synopsisservice.domain.synopsis.vo.SynopsisInfo;
+import com.skb.ft.synopsisservice.domain.synopsis.vo.*;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,7 +14,11 @@ public interface SynopsisService {
 
     SynopsisInfo buildSynopsisInfo(EuxpSynopsisResponseDto euxpSynopsisResponseDto, SmdLikeHateResponseDto smdLikeHateResponseDto);
 
-    PlayInfo builePlayInfo(EuxpSynopsisResponseDto euxpSynopsisResponseDto, ScsDirectviewResponseDto scsDirectviewResponseDto);
+    PlayInfo buildPlayInfo(EuxpSynopsisResponseDto euxpSynopsisResponseDto, ScsDirectviewResponseDto scsDirectviewResponseDto);
 
-    PurchaseInfo purchaseInfo(EuxpSynopsisResponseDto euxpSynopsisResponseDto, ScsDirectviewResponseDto scsDirectviewResponseDto);
+    PurchaseInfo buildPurchaseInfo(EuxpSynopsisResponseDto euxpSynopsisResponseDto, ScsDirectviewResponseDto scsDirectviewResponseDto);
+
+    TitleContent buildTitle(EuxpSynopsisResponseDto euxpSynopsisResponseDto);
+
+    UserActivity buildUserActivity(SmdLikeHateResponseDto smdLikeHateResponseDto);
 }
