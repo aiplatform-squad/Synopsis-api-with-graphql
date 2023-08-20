@@ -9,4 +9,6 @@ import org.springframework.stereotype.Service;
 public interface SmdService {
     public SmdLikeHateResponseDto callSmdLikeHateResponse(SmdRequestParamDto smdRequestParamDto);
     SmdLikeHateResponseDto loadSmdSynopsisPage(SynopsisPageRequestDto synopsisPageRequestDto);
+    public SmdLikeHateResponseDto callSmdLikeHateResponseWebClient(SmdRequestParamDto smdRequestParamDto);
+    SmdLikeHateResponseDto loadSmdSynopsisPageWebClient(SynopsisPageRequestDto synopsisPageRequestDto);
 }

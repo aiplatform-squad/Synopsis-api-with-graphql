@@ -8,4 +8,6 @@ import org.springframework.stereotype.Service;
 public interface ScsService {
     ScsDirectviewResponseDto callScsDirectviewResponse(ScsDirectviewRequestDto scsDirectviewRequestDto);
     ScsDirectviewResponseDto loadSmdSynopsisPage(SynopsisPageRequestDto synopsisPageRequestDto);
+    public ScsDirectviewResponseDto callScsDirectviewResponseWebClient(ScsDirectviewRequestDto scsDirectviewRequestDto);
+    ScsDirectviewResponseDto loadSmdSynopsisPageWebCleitn(SynopsisPageRequestDto synopsisPageRequestDto);
 }

@@ -33,6 +33,11 @@ public class SynopsisServiceImpl implements SynopsisService{
         ScsDirectviewResponseDto scsDirectviewResponseDto = scsService.loadSmdSynopsisPage(synopsisPageRequestDto);
         SmdLikeHateResponseDto smdLikeHateResponseDto = smdService.loadSmdSynopsisPage(synopsisPageRequestDto);
 
+//        EuxpSynopsisResponseDto euxpSynopsisResponseDto = euxpService.loadEuxpSynopsisPageWebClient(synopsisPageRequestDto);
+//        ScsDirectviewResponseDto scsDirectviewResponseDto = scsService.loadSmdSynopsisPageWebCleitn(synopsisPageRequestDto);
+//        SmdLikeHateResponseDto smdLikeHateResponseDto = smdService.loadSmdSynopsisPageWebClient(synopsisPageRequestDto);
+
+
         List<Result> resultList = new ArrayList<>();
 
         //EuxpResult 생성

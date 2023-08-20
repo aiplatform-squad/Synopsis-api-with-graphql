@@ -1,11 +1,13 @@
 package com.skb.ft.synopsisservice.domain.euxp.vo;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.util.ArrayList;
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class SiteReview {
     public String sris_id;
     public TmdbPntInfo tmdb_pnt_info;

@@ -9,4 +9,6 @@ import org.springframework.stereotype.Service;
 public interface EuxpService {
     EuxpSynopsisResponseDto callEuxpResponse(EuxpRequestParamDto euxpRequestParamDto);
     EuxpSynopsisResponseDto loadEuxpSynopsisPage(SynopsisPageRequestDto synopsisPageRequestDto);
+    public EuxpSynopsisResponseDto callEuxpResponseWebClient(EuxpRequestParamDto euxpRequestParamDto);
+    EuxpSynopsisResponseDto loadEuxpSynopsisPageWebClient(SynopsisPageRequestDto synopsisPageRequestDto);
 }
