@@ -29,6 +29,8 @@ env:
   EUXP_URL: ${EUXP_URL}
   SMD_URL: ${SMD_URL}
   SCS_URL: ${SCS_URL}
+  EUXP_URL_PARAM: ${EUXP_URL_PARAM}
+  SMD_URL_PARAM: ${SMD_URL_PARAM}
 logging:
   level:
     com.skb.ft.synopsisservice.domain: DEBUG

@@ -45,4 +45,9 @@ public class Controller {
     public SynopsisPageResponseDto synopsisPageViewQuery(@Argument SynopsisPageRequestDto inputParam){
     return synopsisService.getSynopsisPage(inputParam);
     }
+    @MeasureExecutionTime
+    @QueryMapping
+    public SynopsisPageResponseDto synopsisPageViewQueryWebClient(@Argument SynopsisPageRequestDto inputParam){
+        return synopsisService.getSynopsisPageWebClient(inputParam);
+    }
 }

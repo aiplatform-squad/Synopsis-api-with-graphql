@@ -1,10 +1,12 @@
 package com.skb.ft.synopsisservice.domain.euxp.vo;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class People {
     public String prs_id;
     public String prs_nm;

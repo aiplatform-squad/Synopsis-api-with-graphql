@@ -1,11 +1,13 @@
 package com.skb.ft.synopsisservice.domain.euxp.vo;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.util.ArrayList;
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class EpsdRsluInfo {
     public String epsd_rslu_id;
     public String rslu_typ_cd;

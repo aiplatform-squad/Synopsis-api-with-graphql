@@ -1,10 +1,12 @@
 package com.skb.ft.synopsisservice.domain.euxp.vo;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class BtvPntInfo {
     public double btv_pnt;
     public int btv_like_ncnt;
