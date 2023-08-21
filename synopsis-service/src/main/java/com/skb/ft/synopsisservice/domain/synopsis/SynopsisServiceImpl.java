@@ -33,9 +33,6 @@ public class SynopsisServiceImpl implements SynopsisService{
         ScsDirectviewResponseDto scsDirectviewResponseDto = scsService.loadSmdSynopsisPage(synopsisPageRequestDto);
         SmdLikeHateResponseDto smdLikeHateResponseDto = smdService.loadSmdSynopsisPage(synopsisPageRequestDto);
 
-//        EuxpSynopsisResponseDto euxpSynopsisResponseDto = euxpService.loadEuxpSynopsisPageWebClient(synopsisPageRequestDto);
-//        ScsDirectviewResponseDto scsDirectviewResponseDto = scsService.loadSmdSynopsisPageWebCleitn(synopsisPageRequestDto);
-//        SmdLikeHateResponseDto smdLikeHateResponseDto = smdService.loadSmdSynopsisPageWebClient(synopsisPageRequestDto);
 
 
         List<Result> resultList = new ArrayList<>();
@@ -196,6 +193,73 @@ public class SynopsisServiceImpl implements SynopsisService{
                     .call_url(b.getCall_url()).build());
         }
         return synopsisBanners;
+    }
+
+    @Override
+    public SynopsisPageResponseDto getSynopsisPageWebClient(SynopsisPageRequestDto synopsisPageRequestDto) {
+
+
+        EuxpSynopsisResponseDto euxpSynopsisResponseDto = euxpService.loadEuxpSynopsisPageWebClient(synopsisPageRequestDto);
+        ScsDirectviewResponseDto scsDirectviewResponseDto = scsService.loadSmdSynopsisPageWebCleitn(synopsisPageRequestDto);
+        SmdLikeHateResponseDto smdLikeHateResponseDto = smdService.loadSmdSynopsisPageWebClient(synopsisPageRequestDto);
+
+
+        List<Result> resultList = new ArrayList<>();
+
+        //EuxpResult 생성
+        Result euxpResult = Result.builder()
+                .api("euxpSynmopsisApi").result(euxpSynopsisResponseDto.getResult()).reason(euxpSynopsisResponseDto.getReason()).build();
+        if (Objects.isNull(euxpSynopsisResponseDto.getErrorMessage())) {
+            resultList.add(new SuccessResult(euxpResult));
+        } else {
+            resultList.add(new FailResult(euxpResult, euxpSynopsisResponseDto.getErrorMessage()));
+        }
+
+        //SCS
+        Result smdResult = Result.builder()
+                .api("smdLikeHateApi").result(smdLikeHateResponseDto.getResult()).reason(smdLikeHateResponseDto.getReason()).build();
+        if (Objects.isNull(smdLikeHateResponseDto.getErrorMessage())) {
+            resultList.add(new SuccessResult(smdResult));
+        } else {
+            resultList.add(new FailResult(smdResult, smdLikeHateResponseDto.getErrorMessage()));
+        }
+
+        //scs
+        Result scsResult = Result.builder()
+                .api("scsDirectviewApi").result(scsDirectviewResponseDto.getResult()).reason(scsDirectviewResponseDto.getReason()).build();
+        if (Objects.isNull(scsDirectviewResponseDto.getErrorMessage())) {
+            resultList.add(new SuccessResult(scsResult));
+        } else {
+            resultList.add(new FailResult(scsResult, scsDirectviewResponseDto.getErrorMessage()));
+        }
+
+        SynopsisInfo synopsisInfo = this.buildSynopsisInfo(euxpSynopsisResponseDto, smdLikeHateResponseDto);
+        PlayInfo playInfo = this.buildPlayInfo(euxpSynopsisResponseDto, scsDirectviewResponseDto);
+        PurchaseInfo purchaseInfo = this.buildPurchaseInfo(euxpSynopsisResponseDto, scsDirectviewResponseDto);
+        TitleContent title=this.buildTitle(euxpSynopsisResponseDto);
+        UserActivity userActivity=this.buildUserActivity(smdLikeHateResponseDto);
+
+
+        SynopsisPage synopsisPage = SynopsisPage.builder()
+                .euxpSynopsis(euxpSynopsisResponseDto)
+                .scsDirectview(scsDirectviewResponseDto)
+                .smdLikeHate(smdLikeHateResponseDto)
+                .synopsis_type(euxpSynopsisResponseDto.getSeries().isEmpty()? SynopsisType.SHORTS:SynopsisType.SEASON)
+                .title(title)
+                .synopsisInfo(synopsisInfo)
+                .userActivity(userActivity)
+                .playInfo(playInfo)
+                .purchaseInfo(purchaseInfo)
+                .series(euxpSynopsisResponseDto.getSeries())
+                .build();
+
+        if (euxpSynopsisResponseDto.getTotal_banner_count() != 0) {
+            synopsisPage.setSynopsis_banners(this.banner(euxpSynopsisResponseDto.getBanners()));
+        }
+        SynopsisPageResponseDto synopsisPageResponseDto = SynopsisPageResponseDto.builder()
+                .result(resultList)
+                .synopsisPage(synopsisPage).build();
+        return synopsisPageResponseDto;
     }
 
 }

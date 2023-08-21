@@ -27,6 +27,7 @@ type Query {
         ppv_products:[JSON]!
     ):ScsDirectview
     synopsisPageViewQuery(inputParam: SynopsisPageViewInput):SynopsisPageViewQueryResult
+    synopsisPageViewQueryWebClient(inputParam: SynopsisPageViewInput):SynopsisPageViewQueryResult
 }
 
 interface Result{

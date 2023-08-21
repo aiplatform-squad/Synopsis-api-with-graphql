@@ -21,4 +21,5 @@ public interface SynopsisService {
     TitleContent buildTitle(EuxpSynopsisResponseDto euxpSynopsisResponseDto);
 
     UserActivity buildUserActivity(SmdLikeHateResponseDto smdLikeHateResponseDto);
+    public SynopsisPageResponseDto getSynopsisPageWebClient(SynopsisPageRequestDto synopsisPageRequestDto) ;
 }
